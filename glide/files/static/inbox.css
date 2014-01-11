@@ -1,0 +1,79 @@
+#top-menu-content {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#inbox-body {
+	width: 1000px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0;
+	margin: auto;
+	margin-top: 20px;
+}
+#inbox-list {
+	float: left;
+	width: 980px;
+	height: 500px;
+	overflow: auto;
+}
+#inbox-compose {
+	margin-bottom: 20px;
+	float: left;
+	width: 980px;
+	height: 230px;
+}
+#inbox-entity {
+	position: relative;
+	width: 970px;
+	min-height: 80px;
+	border-top: 2px solid #eeeef3;
+	border-bottom: 2px solid #eeeef3;
+	padding: 5px;
+}
+#inbox-list a {
+	text-decoration: none;
+	color: #434a54;
+}
+#inbox-entity:hover {
+	background-color: #eeeef3;
+}
+#inbox-heading {
+	margin: 0 auto 5px auto;
+	text-transform: uppercase;
+}
+.inbox-image {
+	float: left;
+	margin: 5px 10px 5px 0;
+	width: 70px;
+	height: 70px;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	border-radius: 35px;
+}
+.inbox-text-left {
+	margin-left: 90px;
+	width: 750px;
+}
+.inbox-text-right {
+	float: right;
+	margin: auto;
+	text-align: right;
+	width: 150px;
+	font-size: 12px;
+}
+#id_conversation {
+	display: none;
+}
+form textarea {
+	width: 99%;
+	resize: none;
+	border: 2px solid #eeeef3;
+}
+form input {
+	width: 99%;
+}
+a {
+	color: #434a54;
+}

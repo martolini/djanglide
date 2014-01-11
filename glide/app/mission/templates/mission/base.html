@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}mission.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="mission-body">
+	<div class="white-block" id="mission">
+		<h2>Our Mission</h2>
+		<p>Our mission at Glide.With.Us is to bring ‘Social’ interaction back into modern day ‘Social Media’. The sole purpose of our existence is to help facilitate the connection between two or more people, who would have otherwise, never had the opportunity to meet. We look forward to developing a long lasting relationship with all our users- while helping to facilitate the relationships between you and others, from all over the world. We believe that with your help, we can rid the world of ignorance, and solve the root of all conflict. The key is to get off our couch, get off of Facebook, and interact face to face.  Only then will we truly really get to know each other. </p>
+		<hr>
+		<h2>Our History</h2>
+		<p>Founded in 2012, after the founders experienced first hand the nightmare behind travel research, we set out to automate the travel research process. We built software that matched travelers to vacation destinations based on their interests, while generating an itinerary for them consisting of things to do while they were in any particular city. Throughout our interaction with potential customers, we soon realized, that the best way to find things to do in any given destination was actually through the locals themselves.  It was they who lived in and knew the city best, and it was they who were the most passionate showing it off. Taking what we had learned this past summer, we started to work on our latest iteration of the service- focusing more around connecting like-minded people face to face.</p>
+		<hr>
+		<h2>Our Service</h2>
+			<p>How it works</p>
+		<ul>
+			<li><p>Create your own profile.</p></li>
+			<li><p>Browse through hundreds of interesting people from all over the world.</p></li>
+			<li><p>Send them a meetup request. </p></li>
+		</ul>
+		<hr>
+		<p id="last-p-about">Glidewith.us is a platform that helps to facilitate the connection between like-minded individuals. We believe, that by connecting people of different background together, we can breed a foundation of mutual understanding, and reduce the amount of conflict caused due to misunderstandings. </p>
+	</div>
+</div>
+
+{% endblock %}

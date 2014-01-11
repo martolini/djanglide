@@ -1,0 +1,6 @@
+{% load i18n %}
+<form id="interest-form" method="post" action="/interests/add/">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" class="green-button" id="interests-button" value="{% trans "Add" %}">
+</form>

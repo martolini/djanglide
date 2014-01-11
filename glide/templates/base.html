@@ -1,0 +1,65 @@
+{% load i18n %}
+{% load inbox %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="{{ STATIC_URL }}base.css" media="screen" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+	{% block include %}{% endblock %}
+</head>
+
+<header>
+	<div id="top-menu-bar">
+		<div id="top-menu-content">
+			<a href="{% url 'frontpage' %}" class="top-menu-left"><img src="{{ STATIC_URL }}img/logo.png"/></a>
+			<div id="top-menu-right">
+				{% if not user.is_authenticated %}
+				<div id="top-menu-right-login">
+					<form action="{% url 'auth_view' %}" method="POST">
+						<input type="text" name="username" size="16" placeholder="Username"/>
+						<input type="password" name="password" size="16" placeholder="Password"/>
+						<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
+						<input type="hidden" name="next" value="{{ next }}" />
+						<input type="submit" class="blue-button" value="{% trans 'Login' %}"/>
+					</form>
+				</div>
+				{% else %}
+				<div id="top-menu-right-image">
+					<label for="profile-menu">
+						<img src="{{ STATIC_URL }}img/account.png"/>
+					</label>
+					<input type="checkbox" id="profile-menu">
+					<div id="dropdown">
+						<a href="{% url 'account' %}" class="dropdown-button">{% trans "View Profile" %}</a>
+						{% if not user.get_profile.is_local %}
+							<a href="{% url 'be_local' %}" class="dropdown-button">{% trans "Sign as local" %}</a>
+						{% else %}
+							<a href="{% url 'be_local' %}" class="dropdown-button">{% trans "Unlist yourself" %}</a>
+						{% endif %}						
+						<a href="{% url 'inbox' %}" class="dropdown-button">{% trans "Inbox" %} {% count_all_unread_messages user %}</a>
+						<!-- <a href="#" class="dropdown-button" >{% trans "Change password" %}</a> -->
+						<a href="/profile/logout" class="dropdown-button">{% trans "Logout" %}</a>
+					</div>
+				</div>
+				{% endif %}
+				<div id="top-menu-right-text">
+					{% if user.is_authenticated %}
+						<a href="/profile/logout" class="top-menu-right-login"><u>LOGOUT</u></a>
+					{% endif %}
+					<a href="{% url 'contact' %}" class="top-menu-right-button">{% trans "CONTACT" %}</a>
+					<a href="{% url 'team' %}" class="top-menu-right-button">{% trans "THE TEAM" %}</a>
+					<a href="{% url 'marketplace' %}" class="top-menu-right-button">{% trans "MARKETPLACE" %}</a>
+					<a href="{% url 'mission' %}" class="top-menu-right-button">{% trans "MISSION" %}</a>
+					<a href="{% url 'frontpage' %}" class="top-menu-right-button">{% trans "HOME" %}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<body>
+	{% block content %}{% endblock %}
+</body>
+
+</html>

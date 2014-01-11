@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block include %}
+    <link href="{{ STATIC_URL }}inbox.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="inbox-body">
+    <div class="white-block" id="inbox-compose">
+        <div class="inbox-text-right">
+            <a href="{% url 'inbox' %}">
+                <strong>{% trans "Back to your inbox" %}</strong>
+            </a>
+        </div>
+        <h3 id="inbox-heading">{% trans "New message" %}</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {{ field }}
+            {% endfor  %}
+            <input type="submit" value="{% trans "Send" %}">
+        </form>
+    </div>
+</div>
+{% endblock %}

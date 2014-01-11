@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}marketplace.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<hr class="blue">
+<div id="marketplace-header-background">
+<hr class="blue" id="hr-two">
+</div>
+
+<div id="marketplace-body">
+	<div id="marketplace-search">
+		<h1>{% trans "Find your company here" %}</h1>
+		<h2>{% trans "Browse through local guides & experiences" %}.</h2>
+		<div id="marketplace-search-form">
+		    <form action="{% url 'search_marketplace' %}" id="marketplace-search-form">
+		        {% for field in search_form %}
+		            {{ field }}
+		        {% endfor %}
+		        <input type="submit" class="green-button" id="marketplace-button" value={% trans "Search" %}>
+		    </form>
+		</div>
+	</div>
+</div>
+{% endblock %}

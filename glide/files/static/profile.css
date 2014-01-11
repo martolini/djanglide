@@ -1,0 +1,277 @@
+#top-menu-content {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#profile-body {
+	width: 1000px;
+	padding: 0px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	margin-top: 18px;
+}
+#profile-photo {
+	padding: 0;
+	float: left;
+	width: 680px;
+	height: 370px;
+}
+#profile-photo-menu {
+	float: left;
+	width: 75px;
+	height: 370px;
+}
+#profile-photo-image {
+	text-align: center;
+	float: center;
+}
+#photo-form {
+	margin-top: 100px;
+	padding: 20px;
+	width: 50%;
+	margin-left: 150px;
+	background-color: #eeeef3;
+}
+#photo-form label {
+	display: none;
+}
+#photo-form h3 {
+	margin-bottom: 20px;
+}
+#photo-form input[type=submit] {
+	margin-top: 20px;
+}
+#validated {
+	float: right;
+	height: 60px;
+	width: 280px;
+	margin-bottom: 10px;
+}
+#contact {
+	float: right;
+	width: 280px;
+	max-height: 260px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+#profile-left {
+	float: left;
+	width: 680px;
+}
+#profile-right {
+	float: right;
+	width: 300px;
+}
+#contact a {
+	text-decoration: none;
+	color: #434a54;
+}
+#about {
+	float: left;
+	width: 660px;
+	margin-top: 20px;	
+}
+#interests-block {
+	float: right;
+	width: 280px;
+	max-height: 500px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+#edit-profile {
+	float: right;
+	width: 280px;
+	margin-bottom: 10px;
+}
+#edit-profile button {
+	width: 100%;
+}
+#testimonials {
+	float: left;
+	width: 660px;
+	margin-top: 20px;
+}
+#testimonial-button {
+	float: right;
+}
+#testimonial-headings {
+	width: 350px;
+	float: left;
+}
+#validated-text {
+	margin-top: 7px;
+	float: left;
+	text-transform: uppercase;
+}
+#validated-photo {
+	float: right;
+	margin-top: 10px;
+}
+#contact-left {
+	text-transform: uppercase;
+	float: left;
+	line-height: 37px;
+	margin-top: 10px;
+	font-size: 24px;
+}
+#contact-right {
+	float: right;
+	max-width: 50px;
+	text-align: center;
+	margin-top: 10px;
+	line-height: 40px;
+}
+h2 {
+	margin: 0px;
+	margin-bottom: 3px;
+	text-transform: uppercase;
+}
+h3 {
+	margin: 0px;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+#about-top-left {
+	margin-top: 20px;
+	float: left;
+}
+#about-top-right {
+	float: right;
+}
+#about-content {
+	margin-top: 90px;
+}
+#about-content strong {
+	font-size: 24px;
+}
+#about-content p {
+	margin-top: 5px;
+}
+#testimonial {
+	float: left;
+	width: 100%;
+	margin-bottom: 20px;
+}
+#testimonial-photo {
+	float: left;
+	width: 70px;
+	height: 70px;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	border-radius: 35px;
+	margin: 10px;
+}
+#testimonial-content {
+	position: relative;
+	margin-left: 100px;
+	max-width: 600px;
+}
+#testimonial-meta {
+	text-align: right;
+	float: right;
+	color: #B4B4BA;
+}
+#testimonial-meta strong {
+	color: #434a54;
+}
+#testimonial-hr {
+	float: left;
+	width: 660px;
+}
+#interest-form label {
+	display: none;
+}
+#interest-form {
+	margin: 10px 0 10px 0;
+}
+#id_name {
+	margin: 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #eeeef3;
+	height: 35px;
+	font-size: 20px;
+	width: 60%;
+	margin-right: 5%;
+	padding-left: 5px;
+}
+#interests-button {
+	margin: 0;
+	width: 30%;
+	height: 40px;
+}
+.interest {
+	text-decoration: none;
+	color: #434a54;
+	padding: 5px 20px 5px 5px;
+	border: 2px solid #eeeef3;
+	float: left;
+	margin-bottom: 4px;
+	margin-right: 6px
+}
+#own-interest:hover {
+	background-color: #eeeef3;
+	background-image: url('img/profile/cross.png');
+	background-repeat: no-repeat;
+	background-position: 97% center;
+}
+#anothers-interest:hover {
+	background-color: #eeeef3;
+}
+#occupation-form label {
+	display: none;
+}
+#new-message-button {
+	-moz-box-shadow: 0px 0px 2px 0px #36bc9a;
+	-webkit-box-shadow: 0px 0px 2px 0px #36bc9a;
+	box-shadow: 0px 0px 2px 0px #36bc9a;
+	background-color:#48bc9b;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	padding: 10px;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+#contact-new-message {
+	float: left;
+	margin-bottom: 10px;
+}
+#profile-photo-image-form {
+	position: absolute;
+	left: 200px;
+	top: 150px;
+	padding: 10px;
+	max-width: 350px;
+	word-wrap: break-word;
+	background-color: #eeeef3;
+}
+#profile-photo-image-form a {
+	text-decoration: none;
+}
+#profile-photo-image-form label {
+	display: none;
+}
+#profile-photo-image-form input[type=checkbox] {
+	display: none;
+}
+#id_about {
+	width: 98%;
+	resize: none;
+}
+#personal-information {
+	float: right;
+	width: 280px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+#personal-information input {
+	width: 98%;
+	padding: 4px 0 4px 4px;
+}
+#personal-information select {
+	width: 100%;
+}

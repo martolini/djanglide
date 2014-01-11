@@ -1,0 +1,34 @@
+#top-menu-content {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#mission-body {
+	width: 1000px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0;
+	margin: auto;
+	margin-top: 20px;
+	text-align: center;
+}
+#mission {
+	float: left;
+	width: 980px;
+	height: 1500px;
+	overflow: auto;
+}
+h2 {
+	margin: 0 0 5px 0;
+	font-size: 2em;
+}
+p{
+	font-size: 1.8em;
+}
+ul{
+	text-align: left;
+}
+#last-p-about{
+	font-weight: bold;
+}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}profile.css" media="screen" rel="stylesheet">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script>
+	  $(function() {
+	    $( "#id_birthday" ).datepicker({
+	      defaultDate: '1990-01-01',
+	      yearRange: '1950:2010',
+	      dateFormat: 'yy-mm-dd',
+	      changeMonth: true,
+	      changeYear: true
+	    });
+	  });
+	  </script>
+{% endblock %}
+
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="{% url 'edit_profile' %}">
+	<div id="profile-body">
+		{% csrf_token %}
+		<div class="white-block" id="profile-photo">
+			<div id="profile-photo-menu">
+				<a href="#"><img src="{{ STATIC_URL }}img/profile/profile-photo-chosen.png"/></a>
+				<a href="#"><img src="{{ STATIC_URL }}img/profile/location.png"/></a>
+			</div>
+			<div id="profile-photo-image">
+				{% thumbnail profile.photo "600x370" crop="center" as im %}
+					<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px"/ style="opacity: 0.5;">
+				{% endthumbnail %}
+				<div id="profile-photo-image-form">
+					<h3>{% trans "Change your profile picture" %}</h3>
+					{{ form.photo }}
+					{{ form.photo.errors }}
+				</div>
+			</div>
+		</div>
+
+		<div class="white-block" id="edit-profile">
+			<input type="submit" class="green-button" style="width: 100%;" value="{% trans "Save changes" %}"/>
+		</div>
+
+		<div class="white-block" id="personal-information">
+			<h3>{% trans "Personal information" %}</h3>
+			{% trans "First name" %}: {{ form.new_first_name }} {{ form.new_first_name.errors }}<br>
+			{% trans "Last name" %}: {{ form.new_last_name }} {{ form.new_last_name.errors }}<br>
+			{% trans "Occupation" %}: {{ form.new_occupation }} {{ form.new_occupation.errors }}<br>
+			{% trans "Sex" %}: {{ form.gender }} {{ form.gender.errors }}<br>
+			{% trans "Birthday" %}: {{ form.birthday }} {{ form.birthday.errors }}<br>
+			<hr>
+			<h3>{% trans "Account" %}</h3>
+			{% trans "Email" %}: {{ form.new_email }} {{ form.new_email.errors }}<br>
+			<hr>
+			<h3>{% trans "Location" %}</h3>
+			{% trans "Country" %}: {{ form.country }} {{ form.country.errors }}<br>
+			{% trans "State" %}: {{ form.state }} {{ form.state.errors }}<br>
+			{% trans "City" %}: {{ form.new_city }} {{ form.new_city.errors }}<br>
+			<hr>
+		</div>
+
+		<div class="white-block" id="about">
+			<div id="about-top-left">
+				<h2>{{ profile.user.get_full_name }}</h2>
+				<h3>{{ occupation }}, {{ profile.city }}</h3>
+			</div>
+			<div id="about-top-right">
+				<strong>{{ profile.rating }}</strong>
+			</div>
+			<div id="about-content">
+				<strong>{% trans "About me" %}</strong><br>
+				{{ form.about }} {{ form.about.errors }}
+			</div>
+		</div>
+	</div>
+</form>
+{% endblock %}

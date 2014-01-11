@@ -1,0 +1,6 @@
+{% load i18n %}
+<form id="occupation-form" method="post" action="{% url 'add_occupation' %}">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" class="green-button" value="{% trans "Save" %}">
+</form>

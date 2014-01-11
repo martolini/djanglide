@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load i18n %}
+{% load inbox %}
+{% load thumbnail %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}inbox.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="inbox-body">
+	<div class="white-block" id="inbox-compose">
+		<div class="inbox-text-right">
+			<a href="{% url 'inbox' %}">
+				<strong>{% trans "Back to your inbox" %}</strong>
+			</a>
+		</div>
+		<h3 id="inbox-heading">{% trans "New message" %}</h3>
+		{% load_reply_form conversation %}
+	</div>
+
+	<div class="white-block" id="inbox-list">
+		<h3 id="inbox-heading">
+			{% trans "Your conversation with" %}
+				{% if user == conversation.receiver %}
+					<a href="{% url 'view_another_profile' conversation.sender.username %}">
+						<u>
+							{{ conversation.sender.get_full_name }}
+						</u>
+					</a>
+				{% else %}
+					<a href="{% url 'view_another_profile' conversation.receiver.username %}">
+						<u>
+							{{ conversation.receiver.get_full_name }}
+						</u>
+					</a>
+				{% endif %}
+		</h3>
+
+		{% for message in messages %}
+			<div id="inbox-entity">
+				{% thumbnail message.author_profile.photo "70x70" crop="center" as im %}
+					{% if user != message.author %}
+						<a href="{% url 'view_another_profile' message.author.username %}">
+							<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px" class="inbox-image"/>
+						</a>
+					{% else %}
+						<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px" class="inbox-image"/>
+					{% endif %}
+				{% endthumbnail %}
+				<div class="inbox-text-right">
+					{% if 'day' in message.date|timesince %}
+						<em>{{ message.date }}</em>
+					{% else %}
+						<em>{{ message.date|timesince }} {% trans "ago" %}</em>
+					{% endif %}
+				</div>
+				<div class="inbox-text-left">
+					<strong>{{ message.author.first_name }}</strong>
+					{{ message.content|markdown:"safe" }}
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+</div>
+
+{% endblock %}

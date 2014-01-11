@@ -1,0 +1,6 @@
+*.pyc
+*.pyo
+venv/*
+db.sqlite3
+glide/files/uploads/
+.DS_Store

@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load i18n %}
+{% load testimonials %}
+{% load thumbnail %}
+{% load interests %}
+{% load profiles %}
+{% load inbox %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}profile.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="profile-body">
+	<div id="profile-left">
+		<div class="white-block" id="profile-photo">
+			<div id="profile-photo-menu">
+				<a href="#"><img src="{{ STATIC_URL }}img/profile/profile-photo-chosen.png"/></a>
+				<a href="#"><img src="{{ STATIC_URL }}img/profile/location.png"/></a>
+			</div>
+			<div id="profile-photo-image">
+				{% if profile.photo == '' %}
+					{% if user = profile.user %}
+						{% load_photo_form %}
+					{% endif %}
+				{% else %}
+					{% thumbnail profile.photo "600x370" crop="center" as im %}
+						<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px"/>
+					{% endthumbnail %}
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="white-block" id="about">
+			<div id="about-top-left">
+				<h2>{{ profile.user.get_full_name }}</h2>
+				<h3>
+					{% if not occupation and not profile.city %}		
+					{% elif not occupation %}
+						{{ profile.city }}
+					{% elif not profile.city %}
+						{{ occupation }}
+					{% else %}
+						{{ occupation }}, {{ profile.city }}
+					{% endif %}
+				</h3>
+			</div>
+			<div id="about-top-right">
+				{% load_rating profile %}
+			</div>
+			<div id="about-content">
+				<strong>{% trans "About me" %}</strong>
+				<p>{{ profile.about|markdown:"safe" }}</p>
+			</div>
+		</div>
+
+		<div class="white-block" id="testimonials">
+			<div id="testimonial-headings">
+				<h2>{% trans "Ratings & Comments" %}</h2>
+				<h3>{% trans "Testimonials" %}</h3><br>
+			</div>
+			{% if user != profile.user and user.is_authenticated %}
+				<a href="{% url 'add_testimonial' profile.user.username %}">
+					<button class="green-button" id="testimonial-button">
+						{% trans "Recommend" %} {{ profile.user.first_name }}
+					</button>
+				</a>
+			{% endif %}
+			{% load_testimonials profile %}
+		</div>
+	</div>
+
+	<div id="profile-right">
+		{% if user == profile.user %}
+			<div class="white-block" id="edit-profile">
+				<a href="{% url 'edit_profile' %}">
+					<button class="green-button">{% trans "Edit profile" %}</button>
+				</a>
+			</div>
+			<div class="white-block" id="edit-profile">
+				<a href="{% url 'inbox' %}">
+					<button class="green-button">{% trans "Inbox" %} {% count_all_unread_messages user %}</button>
+				</a>
+			</div>
+		{% endif %}
+
+		{% if profile.validated %}
+			<div class="white-block" id="validated">
+				<div id="validated-text">
+					<h2>{% trans "Validated user" %}</h2>
+					<h3>{{ profile.user.first_name }}'s legit</h3>
+				</div>
+				<div id="validated-photo">
+					<img src="{{ STATIC_URL }}img/profile/validated.png"/>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if user != profile.user %}
+			<div class="white-block" id="contact">
+				<div id="contact-top">
+					<h2>{% trans "Contact user" %}</h2>
+					<h3>{% trans "You can say hi here" %}...</h3>
+					<hr>
+				</div>
+	<!-- 			<div style="float: left; width: 100%; margin-bottom: 10px;">
+					<div id="contact-left">
+						{% trans "E-mail" %}<br>
+						{% if profile.has_facebook %}
+							{% trans "Facebook" %}<br>
+						{% endif %}
+						{% if profile.has_twitter %}
+							{% trans "Twitter" %}<br>
+						{% endif %}
+					</div>
+					<div id="contact-right">
+						<a href="#"><img src="{{ STATIC_URL }}img/profile/mail.png"/></a>
+						{% if profile.has_facebook %}
+							<a href="#"><img src="{{ STATIC_URL }}img/profile/facebook.png"/></a>
+						{% endif %}
+						{% if profile.has_twitter %}
+							<a href="#"><img src="{{ STATIC_URL }}img/profile/twitter.png"/></a>
+						{% endif %}
+					</div>
+				</div> -->
+				<br>
+				<div id="contact-new-message">
+						<a href="{% url 'new_message' profile.pk %}" style="color: #ffffff;" id="new-message-button">
+							{% trans "Send message" %}
+						</a>
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="white-block" id="interests-block">
+			<h2>{% trans "Interests" %}</h2>
+			{% if user == profile.user %}
+				<h3>{% trans "Add your interests here..." %}</h3>
+				{% load_interests_form %}
+			{% else %}
+				<h3>
+					{% if interests %}
+						{% trans "These are" %} {{ profile.user.first_name }}s...
+						<hr>
+					{% else %}
+						{{ profile.user.first_name }} {% trans "has not listed any interests" %}.
+					{% endif %}
+				</h3>
+			{% endif %}
+			{% if user == profile.user %}
+				{% for interest in interests %}
+					<a href="{% url 'delete_interest' interest.pk %}">
+						<div class="interest" id="own-interest">{{ interest }}</div>
+					</a>
+				{% endfor %}
+			{% else %}
+				{% for interest in interests %}
+					<div class="interest" id="anothers-interest">{{ interest }}</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

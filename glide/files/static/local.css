@@ -1,0 +1,305 @@
+#top-menu-content {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+a{
+	text-decoration: none;
+}
+#about-interests-block{
+	font-size: 1.2em;
+	width: 300px;
+	float: left;
+}
+#about-interests-block p{
+	text-align: center;
+}
+#city-location-block{
+	font-size: 1.2em;
+	width: 300px;
+	float: right;
+}
+#city-location-block input {
+	width: 98%;
+	padding: 4px 0 4px 4px;
+}
+#city-location-block select {
+	width: 98%;
+	padding: 4px 0 4px 4px;
+}
+#main-content{
+	margin-top: 10px;	
+}
+#alert-content {
+	float: left;
+	text-align: center;
+	font-size: 1.2em;
+	width: 320px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	word-wrap: break-word;
+}
+#footer-content{
+	clear: both;
+	width: 100%;
+	background-color: white;
+}
+#footer-button{
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+	width:500px;
+	float: center;
+	height: 100px;
+	font-size:1.2em;
+	text-transform: normal;
+	font-weight: normal;
+}
+.white-block-change{
+	width: 400px;
+	margin-left: 10px;
+	display: inline-block;
+	background-color: #ffffff;
+	padding: 10px;
+}
+#profile-body {
+	width: 1285px;
+	padding: 0px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	margin-top: 18px;
+}
+.green-block{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #36bc9a;
+}
+.green-block p{
+	color: white;
+	text-align: center;
+	font-size: 2em;
+}
+#validated {
+	float: right;
+	height: 60px;
+	width: 280px;
+	margin-bottom: 10px;
+}
+#contact {
+	float: right;
+	width: 280px;
+	max-height: 260px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+#profile-right {
+	float: right;
+	width: 300px;
+}
+#contact a {
+	text-decoration: none;
+	color: #434a54;
+}
+#about {
+	float: left;
+	width: 660px;
+	margin-top: 20px;	
+}
+#interests-block {
+	float: right;
+	width: 280px;
+	max-height: 500px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+#edit-profile {
+	float: right;
+	width: 280px;
+	margin-bottom: 10px;
+}
+#edit-profile button {
+	width: 100%;
+}
+#testimonials {
+	float: left;
+	width: 660px;
+	margin-top: 20px;
+}
+#validated-text {
+	margin-top: 7px;
+	float: left;
+	text-transform: uppercase;
+}
+#validated-photo {
+	float: right;
+	margin-top: 10px;
+}
+#contact-left {
+	text-transform: uppercase;
+	float: left;
+	line-height: 37px;
+	margin-top: 10px;
+	font-size: 24px;
+}
+#contact-right {
+	float: right;
+	max-width: 50px;
+	text-align: center;
+	margin-top: 10px;
+	line-height: 40px;
+}
+h2 {
+	margin: 0px;
+	margin-bottom: 3px;
+	text-transform: uppercase;
+}
+h3 {
+	margin: 0px;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+#about-top-left {
+	margin-top: 20px;
+	float: left;
+}
+#about-top-right {
+	float: right;
+}
+#about-content {
+	margin-top: 90px;
+}
+#about-content strong {
+	font-size: 24px;
+}
+#about-content p {
+	margin-top: 5px;
+}
+#testimonial {
+	float: left;
+	width: 100%;
+	margin-bottom: 20px;
+}
+#testimonial-photo {
+	float: left;
+	width: 70px;
+	height: 70px;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	border-radius: 35px;
+	margin: 10px;
+}
+#testimonial-content {
+	position: relative;
+	margin-left: 100px;
+	max-width: 600px;
+}
+#testimonial-meta {
+	text-align: right;
+	float: right;
+	color: #B4B4BA;
+}
+#testimonial-meta strong {
+	color: #434a54;
+}
+#testimonial-hr {
+	float: left;
+	width: 660px;
+}
+#interest-form label {
+	display: none;
+}
+#interest-form {
+	margin: 10px 0 10px 0;
+}
+#id_name {
+	margin: 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #eeeef3;
+	height: 35px;
+	font-size: 20px;
+	width: 60%;
+	margin-right: 5%;
+	padding-left: 5px;
+}
+#interests-button {
+	margin: 0;
+	width: 30%;
+	height: 40px;
+}
+.interest {
+	text-decoration: none;
+	color: #434a54;
+	padding: 5px 20px 5px 5px;
+	border: 2px solid #eeeef3;
+	float: left;
+	margin-bottom: 4px;
+	margin-right: 6px
+}
+#own-interest:hover {
+	background-color: #eeeef3;
+	background-image: url('img/profile/cross.png');
+	background-repeat: no-repeat;
+	background-position: 97% center;
+}
+#anothers-interest:hover {
+	background-color: #eeeef3;
+}
+#occupation-form label {
+	display: none;
+}
+#new-message-button {
+	-moz-box-shadow: 0px 0px 2px 0px #36bc9a;
+	-webkit-box-shadow: 0px 0px 2px 0px #36bc9a;
+	box-shadow: 0px 0px 2px 0px #36bc9a;
+	background-color:#48bc9b;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	margin-bottom: 50px;
+	padding: 10px;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+#contact-new-message {
+	float: left;
+	margin-bottom: 10px;
+}
+#profile-photo-image-form {
+	position: absolute;
+	left: 200px;
+	top: 150px;
+	padding: 10px;
+	background-color: #eeeef3;
+}
+#profile-photo-image-form a {
+	text-decoration: none;
+}
+#profile-photo-image-form label {
+	display: none;
+}
+#profile-photo-image-form input[type=checkbox] {
+	display: none;
+}
+#id_about {
+	width: 98%;
+	resize: none;
+}
+#personal-information {
+	float: right;
+	width: 280px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+#personal-information input {
+	width: 98%;
+	padding: 4px 0 4px 4px;
+}
+#personal-information select {
+	width: 100%;
+}

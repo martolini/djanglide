@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load i18n %}
+{% load inbox %}
+{% load thumbnail %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}inbox.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="inbox-body">
+	<div class="white-block" id="inbox-list">
+		<h3 id="inbox-heading">{{ user.get_full_name }}'s {% trans "inbox" %}</h3>
+		{% for conversation in conversations %}
+			<a href="{% url 'view_conversation' conversation.pk %}">
+				<div id="inbox-entity">
+					{% if user == conversation.sender %}
+						{% thumbnail conversation.receiver_profile.photo "70x70" crop="center" as im %}
+							<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px" class="inbox-image"/>
+						{% endthumbnail %}
+						<div class="inbox-text-right">
+							{% if 'day' in conversation.last_message|timesince %}
+								<em>{{ conversation.last_message }}</em>
+							{% else %}
+								<em>{{ conversation.last_message|timesince }} {% trans "ago" %}</em>
+							{% endif %}
+						</div>
+						<div class="inbox-text-left">
+							<strong>{{ conversation.receiver.get_full_name }}</strong>
+							{% count_unread_messages conversation user %}
+							<br>
+							{{ conversation.get_last_message.author.first_name }} {% trans "wrote" %}: <em>{{ conversation.get_last_message }}</em>
+						</div>
+					{% else %}
+						{% thumbnail conversation.sender_profile.photo "70x70" crop="center" as im %}
+							<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px" class="inbox-image"/>
+						{% endthumbnail %}
+						<div class="inbox-text-right">
+							{% if 'day' in conversation.last_message|timesince %}
+								<em>{{ conversation.last_message }}</em>
+							{% else %}
+								<em>{{ conversation.last_message|timesince }} {% trans "ago" %}</em>
+							{% endif %}
+						</div>
+						<div class="inbox-text-left">
+							<strong>{{ conversation.sender.get_full_name }}</strong>
+							{% count_unread_messages conversation user %}
+							<br>
+							{{ conversation.get_last_message.author.first_name }} {% trans "wrote" %}: 
+							<em>{{ conversation.get_last_message }}</em>
+						</div>
+					{% endif %}
+
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

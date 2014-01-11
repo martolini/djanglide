@@ -1,0 +1,8 @@
+{% load i18n %}
+<form id="photo-form" enctype="multipart/form-data" method="post" action="{% url 'add_photo' %}">
+	<h3>{% trans "Upload a picture of yourself" %}</h3>
+	{% csrf_token %}
+	{{ form }}
+	<br>
+	<input type="submit" class="green-button" value="{% trans "Upload photo" %}">
+</form>

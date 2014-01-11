@@ -1,0 +1,19 @@
+{% load i18n %}
+<h2>{{ form_title }}</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        {% if not field.is_hidden %}
+            {{ field.label_tag }}<br>
+            {{ field.errors }}
+        {% endif %}
+        {{ field }}
+        {% if not field.is_hidden %}
+            {{ field.help_text }}<br>
+        {% endif %}
+    {% endfor %}
+    <p>
+        <input type="submit" value="{% if form.instance.id %}{% trans "Save" %}{% else %}{% trans "Add" %}{% endif %}">
+    </p>
+</form>

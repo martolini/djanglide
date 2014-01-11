@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load markup %}
+{% load thumbnail %}
+
+{% for testimonial in testimonials %}
+	<div id="testimonial">
+		<a href="{% url 'view_another_profile' testimonial.author.username %}">
+			{% thumbnail testimonial.get_author_photo "70x70" crop="center" as im %}
+				<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px" id="testimonial-photo"/>
+			{% endthumbnail %}
+		</a>
+		<div id="testimonial-content">
+			<div id="testimonial-meta">
+				{{ testimonial.date.date|date:"SHORT_DATE_FORMAT" }}<br>
+
+				{% if testimonial.rating >= 1 %}
+					<img src="{{ STATIC_URL }}img/profile/filled-star.png"/>
+				{% else %}
+					<img src="{{ STATIC_URL }}img/profile/blank-star.png"/>
+				{% endif %}
+
+				{% if testimonial.rating >= 2 %}
+					<img src="{{ STATIC_URL }}img/profile/filled-star.png"/>
+				{% else %}
+					<img src="{{ STATIC_URL }}img/profile/blank-star.png"/>
+				{% endif %}
+
+				{% if testimonial.rating >= 3 %}
+					<img src="{{ STATIC_URL }}img/profile/filled-star.png"/>
+				{% else %}
+					<img src="{{ STATIC_URL }}img/profile/blank-star.png"/>
+				{% endif %}
+
+				{% if testimonial.rating >= 4 %}
+					<img src="{{ STATIC_URL }}img/profile/filled-star.png"/>
+				{% else %}
+					<img src="{{ STATIC_URL }}img/profile/blank-star.png"/>
+				{% endif %}
+
+				{% if testimonial.rating >= 5 %}
+					<img src="{{ STATIC_URL }}img/profile/filled-star.png"/>
+				{% else %}
+					<img src="{{ STATIC_URL }}img/profile/blank-star.png"/>
+				{% endif %}
+
+			</div>
+			<strong>{{ testimonial.author.get_full_name }}</strong>
+			<p>{{ testimonial.content|markdown:"safe" }}</p>
+		</div>
+		<div id="testimonial-hr">
+			<hr>
+		</div>
+	</div>
+{% endfor %}

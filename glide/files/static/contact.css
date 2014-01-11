@@ -1,0 +1,64 @@
+#top-menu-content {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#contact-body {
+	width: 1000px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0;
+	margin: auto;
+	margin-top: 20px;
+}
+#contact {
+	float: left;
+	width: 980px;
+	overflow: auto;
+}
+h2 {
+	margin: 0 0 5px 0;
+}
+textarea {
+	padding: 5px;
+	width: 95%;
+	resize: none;
+}
+input[value=Submit] {
+	width: 98%;
+}
+#contact-form {
+	width: 50%;
+	float: right;
+}
+#contact-text {
+	width: 48%;
+	float: left;
+}
+#id_title {
+	width: 95%;
+	padding: 5px;
+}
+#id_email {
+	width: 95%;
+	padding: 5px;
+}
+label[for=id_title] {
+	display: none;
+}
+label[for=id_email] {
+	display: none;
+}
+label[for=id_abstract] {
+	display: none;
+}
+#contact-form form {
+	text-align: center;
+	background-color: #eeeef3;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding: 10px;
+	border: 1px solid black;
+}

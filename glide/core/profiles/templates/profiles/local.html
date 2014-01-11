@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load i18n %}
+{% load testimonials %}
+{% load thumbnail %}
+{% load interests %}
+{% load profiles %}
+{% load inbox %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}local.css" media="screen" rel="stylesheet">
+	<link href="{{ STATIC_URL }}profile.css" media="screen" rel="stylesheet">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script>
+	  $(function() {
+	    $( "#id_birthday" ).datepicker({
+	      defaultDate: '1990-01-01',
+	      yearRange: '1950:2010',
+	      dateFormat: 'yy-mm-dd',
+	      changeMonth: true,
+	      changeYear: true
+	    });
+	  });
+	  </script>
+{% endblock %}
+
+{% block content %}
+{% if not profile.local %}
+<form method="POST" action="{% url 'be_local' %}">	
+{% csrf_token %}
+<div id="profile-body">
+		<div class="green-block" id="top-content">
+			<p>So glad to have you as a local, {{ profile.user.first_name }}!</p>
+			
+		</div>
+		<div id="main-content">
+			<div class="white-block" id="alert-content">
+				<p>WHEN TRAVELERS ARE LOOKING INTO LOCALS, THEY MAY WANT TO KNOW THAT THEY ARE GOING TO BE HANGING OUT WITH AND TAKING ADVICE FROM SOMEONE TRULY AWESOME.</br></br> WE BELIEVE YOU HAVE THOSE VIRTUES, BUT RIGHT NOW, THE INFORMATION THAT YOU HAVE MADE AVAILABLE MIGHT NOT REFLECT IT.</br></br> YOUR PROFILE IS A LITTLE INCOMPLETE. YOU MIGHT CONSIDER CHANGING/ADDING SOME FACTS ABOUT YOURSELF TO MAKE YOU A MORE DESIRABLE LOCAL.</p>
+			</div>
+
+			<div class="white-block-change" id="about-interests-block">
+				<p>We've provided a way for you to review your profile before submitting to be listed as a local.  Take care to go over and update any information here, whilst keeping in mind that a more in-depth version of this page is easily accessible on the 'edit settings' page of your profile!</p><br>
+				<h3>{% trans "ABOUT ME" %}</h3>
+				{{ form.about }} {{ form.about.errors }}
+				</br>
+				
+			</div>
+			<div class="white-block-change" id="city-location-block">
+			<h3>{% trans "PERSONAL INFO" %}</h3>
+			{% trans "First name" %}: {{ form.new_first_name }} {{ form.new_first_name.errors }}<br>
+			{% trans "Last name" %}: {{ form.new_last_name }} {{ form.new_last_name.errors }}<br>
+			{% trans "Birthday" %}: {{ form.birthday }} {{ form.birthday.errors }}<br>
+			{% trans "Email" %}: {{ form.new_email }} {{ form.new_email.errors }}<br>
+			{% trans "Sex" %}: {{ form.gender }} {{ form.gender.errors }}<br>
+			<hr>
+			<h3>{% trans "Location" %}</h3>
+			{% trans "Country" %}: {{ form.country }} {{ form.country.errors }}<br>
+			{% trans "State" %}: {{ form.state }} {{ form.state.errors }}<br>
+			{% trans "City" %}: {{ form.new_city }} {{ form.new_city.errors }}<br>
+			<hr>
+			<h3>{% trans "YOU MIGHT ALSO CONSIDER ADDING MORE INTERESTS VIA YOUR PROFILE PAGE" %}</h3>
+				<hr>
+			{% if user == profile.user %}
+				{% for interest in interests %}
+					<a href="{% url 'delete_interest' interest.pk %}">
+						<div class="interest" id="own-interest">{{ interest }}</div>
+					</a>
+				{% endfor %}
+			{% else %}
+				{% for interest in interests %}
+					<div class="interest" id="anothers-interest">{{ interest }}</div>
+				{% endfor %}
+			{% endif %}
+			</div>
+		</div>
+		<div id="footer-content">
+			<div id="footer-button">
+				
+					<input type="submit" class="green-button" id="footer-button" value="{% trans "Save changes" %}"></input>
+				
+			</div>
+		</div>
+	</form>
+</div>
+{% else %}
+<form method="POST" action="{% url 'be_local' %}">
+	{% csrf_token %}
+	<div id="profile-body">
+			<div class="green-block" id="top-content">
+				<p>You'll certainly be missed in the community!</p>
+				<p>Are you sure want to cancel your subscription to being a local?</p>
+			</div>
+
+			<div id="footer-content-unlist">
+				<div id="footer-button">
+					
+						<input type="submit" class="green-button" id="footer-button" value="{% trans "Yes, absolutely positive" %}"></input>
+					
+				</div>
+			</div>
+	</div>
+</form>
+{% endif %}
+{% endblock %}

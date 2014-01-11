@@ -1,0 +1,9 @@
+{% load i18n %}
+
+<form method="post" action="/inbox/reply/">
+	{% csrf_token %}
+	{% for field in form.visible_fields %}
+		{{ field }}
+	{% endfor  %}<br>
+	<input type="submit" value="{% trans "Send" %}">
+</form>

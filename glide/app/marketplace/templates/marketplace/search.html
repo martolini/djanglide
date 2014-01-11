@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load i18n %}
+{% load thumbnail %}
+{% load marketplace %}
+{% load profiles %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}marketplace.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="marketplace-body">
+	<div id="marketplace-left">
+		<div class="white-block" id="search-box">
+		    <form action="{% url 'search_marketplace' %}">
+		        <h2>{% trans "Search" %}</h2>
+		        {% for field in search_form %}
+		            {{ field }}
+		        {% endfor %}
+		        <input type="submit" class="green-button" id="marketplace-button" value="Search">
+		    </form>
+		    <br>
+		    {% if hits == 0 %}
+		    	<em>{% trans "Your search returned no results" %}.</em>
+		    {% elif hits > 0 %}
+		    	<em>{% trans "Your search returned" %} {{ hits }} {% trans "result(s)" %}.</em>
+		    {% endif %}
+		</div>
+
+		{% if hits > 0 %}
+			<div class="white-block" id="filter-box">
+				<h2>{% trans "Filter results" %}</h2>
+				<h3>{% trans "Only show" %}...</h3>
+				<form action="{% url 'filter_search' %}">
+					<h2>{% trans "Occupations" %}</h2>
+					{% for occupation in occupation_filter %}
+						<li>
+							<label>
+								<div class="align-left">
+									{{ occupation }}s
+								</div>
+								<div class="align-right">
+									{% if occupation|occupation_is_checked:chosen_occupations %}
+										<input type="checkbox" name="occupation" value="{{ occupation }}" id="filter-checkbox" checked>
+									{% else %}
+										<input type="checkbox" name="occupation" value="{{ occupation }}" id="filter-checkbox">
+									{% endif %}
+								</div>
+							</label>
+						</li>
+					{% endfor %}
+					<h2>{% trans "Interests" %}</h2>
+					{% for interest in interest_filter %}
+						<li>
+							<label>
+								<div class="align-left">
+									{{ interest }}
+								</div>
+								<div class="align-right">
+									{% if interest|interest_is_checked:chosen_interests %}
+										<input type="checkbox" name="interest" value="{{ interest }}" id="filter-checkbox" checked>
+									{% else %}
+										<input type="checkbox" name="interest" value="{{ interest }}" id="filter-checkbox">
+									{% endif %}
+								</div>
+							</label>
+						</li>
+					{% endfor %}
+					<div class="align-right">
+						<br>
+						<input type="hidden" name="query" value="{{ query }}">
+						<input type="submit" class="green-button" value="Update results">
+					</div>
+				</form>
+			</div>
+		{% endif %}
+	</div>
+
+	<!-- Displaying search results with one white block for each result -->
+	<div id="marketplace-right">
+		{% if hits == 0 %}
+			<div class="white-block" id="available-cities-box">
+				<h2>{% trans "No locals found" %}</h2>
+				<h3>{% trans "Please choose from the list to the left" %}</h3>
+			</div>
+		{% endif %}
+		{% for result in results|slice:":30" %}
+			<div class="result-box" id="{{ result.has_occupation }}">
+				<div id="result-circle-box">
+					<div id="result-photo">
+						<a href="{% url 'view_another_profile' result.user.username %}">
+							{% thumbnail result.photo "150x150" crop="center" as im %}
+								<img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px" id="result-circle"/>
+							{% endthumbnail %}
+						</a>
+					</div>
+				</div>
+				<div id="result-meta">
+					<h2>{{ result.user.get_full_name }}</h2>
+					<h3>{{ result.has_occupation }}, {{ result.city }}</h3>
+				</div> 
+				<div id="result-content">
+					{{ result.short }}
+				</div>
+				<div id="result-rating">
+					{% load_rating result %}
+				</div>
+				<a href="{% url 'view_another_profile' result.user.username %}">
+					<button class="green-button">{% trans "Learn more about me" %}</button>
+				</a>
+				
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
+{% endblock %}
