@@ -133,7 +133,7 @@ body{
 #landing-about{
 	text-align: center;
 	margin: auto;
-	margin-top: -23px;
+	margin-top: 60px;
 }
 .para-div{
 	width:25%;
@@ -151,19 +151,9 @@ body{
 }
 #arrow-section{
 	text-align: center;
-	margin-left: 15%;
-}
-#arrow-section > img{
-	width:100px;
-	height:100px;
-	margin-right:20%;
-	display: inline-block;
 }
 #arrow-section > h3{
-	display: inline-block;
-	margin-top: -80px;
 	vertical-align: middle;
-	margin-right:20%;
 }
 #fade-spacer{
 	margin-top:610px;

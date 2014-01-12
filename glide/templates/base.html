@@ -62,27 +62,27 @@
 <body>
 	{% block content %}{% endblock %}
 </body>
-<script>
-$(document).ready(function(){
-	$("goal").fadeOut(500,function(){
+// <script>
+// $(document).ready(function(){
+// 	$("goal").fadeOut(500,function(){
 
-	});
-});
-$(window).scroll(function() {
-    if ($(window).scrollBottom() === 0) {
-        fadingIn = true;
-        $("#arrow-section").fadeOut(500, function() {
+// 	});
+// });
+// $(window).scroll(function() {
+//     if ($(window).scrollBottom() === 0) {
+//         fadingIn = true;
+//         $("#arrow-section").fadeOut(500, function() {
             
-        });
-    }
-    else if($(window).scrollBottom() >= 50){
-    	$("#arrow-section").fadeIn(500, function() {
+//         });
+//     }
+//     else if($(window).scrollBottom() >= 50){
+//     	$("#arrow-section").fadeIn(500, function() {
         
-        });
-    }
-});
-$.fn.scrollBottom = function() { 
-  return $(document).height() - this.scrollTop() - this.height(); 
-};
-</script>
+//         });
+//     }
+// });
+// $.fn.scrollBottom = function() { 
+//   return $(document).height() - this.scrollTop() - this.height(); 
+// };
+// </script>
 </html>
