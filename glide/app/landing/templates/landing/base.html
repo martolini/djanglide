@@ -11,7 +11,7 @@
 {% block content %}
 <hr class="blue">
 <div id="landing-header-background">
-
+<hr class="blue" id="hr-two">
 </div>
 
 <div id="landing-body">
@@ -60,10 +60,25 @@
 			{% endif %}
 		</div>
 	</div>
-	<div id="landing-about">
-			<h1>Bigger is not always better. We aim to make the world a smaller, friendlier place to live in.</h1>
-			</br>
-			<p id="footer-about-paragraph">Since the commercialization of the Internet, face-to-face social interaction has been increasingly marginalized. The rise of social networks like Facebook, Twitter, and so many others, allow us to stay connected to the people we already know, but instead of going out and meeting new people, we’re sitting behind a screen.</p>
-		</div>
+</div>
+<div id="fade-spacer"></div>
+<div id="arrow-section">
+	<img src="{{ STATIC_URL }}img/landing/arrow-down.png" id="arrow1">
+		<h3>WHAT AM I GETTING INTO?</h3>
+	<img src="{{ STATIC_URL }}img/landing/arrow-down.png" id="arrow2">
+</div>
+<div id="landing-about">
+			<div class = "para-div" id="sec1">
+			<h1>Our Problem</h1>
+			<p id="footer-about-paragraph">Since the commercialization of the Internet, face-to-face social interaction has been increasingly marginalized. The rise of social networks like Facebook, Twitter, and so many others, allows us to stay connected to the people we already know, but instead of going out and meeting these new people, we’re sitting behind a screen.</p>
+			</div>
+			<div class = "para-div" id="sec2">
+			<h1>Why now?</h1>
+			<p id="footer-about-paragraph">The world is changing. It's no longer about what you know but who you know.</p>
+			</div>
+			<div class = "para-div" id="sec3">
+			<h1>Solution</h1>
+			<p id="footer-about-paragraph">Glide is a platform that helps you find like-minded individuals to meet up with</p>
+			</div>
 </div>
 {% endblock %}
