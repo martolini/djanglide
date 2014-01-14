@@ -54,20 +54,22 @@ ul{
 .team-info{
 	margin-bottom: 10px;
 	width: 100%;
-	height: 250px;
+	height: 350px;
 	background-color: #eeeef3;
+	text-align: center;
+	overflow: auto;
+
 }
 .team-circle{
-	width:200px;
+	width:300px;
 	margin-top: 25px;
-	margin-right: 100px;
-	height: 200px;
+	height: 300px;
 	border-radius: 100px;
 	display: inline-block;
 }
 .team-circle > img{
-	width: 100%;
-	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 	border-radius: 100px;
 }
 .team-para{
@@ -78,7 +80,9 @@ ul{
 	vertical-align: top;
 	text-align: left;
 }
-
+#arad-div{
+	height: 500px;
+}
 #team-info-id{
 	height: 100%;
 }
