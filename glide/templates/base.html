@@ -49,9 +49,8 @@
 						<a href="/profile/logout" class="top-menu-right-login"><u>LOGOUT</u></a>
 					{% endif %}
 					<a href="{% url 'contact' %}" class="top-menu-right-button">{% trans "CONTACT" %}</a>
-					<a href="{% url 'team' %}" class="top-menu-right-button">{% trans "THE TEAM" %}</a>
 					<a href="{% url 'marketplace' %}" class="top-menu-right-button">{% trans "MARKETPLACE" %}</a>
-					<a href="{% url 'mission' %}" class="top-menu-right-button">{% trans "MISSION" %}</a>
+					<a href="{% url 'mission' %}" class="top-menu-right-button">{% trans "ABOUT" %}</a>
 					<a href="{% url 'frontpage' %}" class="top-menu-right-button">{% trans "HOME" %}</a>
 				</div>
 			</div>
@@ -62,27 +61,4 @@
 <body>
 	{% block content %}{% endblock %}
 </body>
-// <script>
-// $(document).ready(function(){
-// 	$("goal").fadeOut(500,function(){
-
-// 	});
-// });
-// $(window).scroll(function() {
-//     if ($(window).scrollBottom() === 0) {
-//         fadingIn = true;
-//         $("#arrow-section").fadeOut(500, function() {
-            
-//         });
-//     }
-//     else if($(window).scrollBottom() >= 50){
-//     	$("#arrow-section").fadeIn(500, function() {
-        
-//         });
-//     }
-// });
-// $.fn.scrollBottom = function() { 
-//   return $(document).height() - this.scrollTop() - this.height(); 
-// };
-// </script>
 </html>
