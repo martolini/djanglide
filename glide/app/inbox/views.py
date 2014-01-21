@@ -5,7 +5,7 @@ from glide.app.inbox.forms import ReplyMessageForm, NewMessageForm
 from django.db.models import Q
 from django.http import HttpResponsePermanentRedirect
 from glide.core.profiles.models import Profile
-
+from glide.core.notifications.models import Notification
 @login_required
 def inbox(request):
 	conversations = Conversation.objects.filter(Q(receiver=request.user) | Q(sender=request.user)).order_by('-last_message')
@@ -34,6 +34,8 @@ def reply(request):
 			item.author = request.user
 			item.save()
 			conversation = item.conversation
+			new_notification("message",conversation.sender,conversation.receiver)
+			print "Sent notification"
 			conversation.save()
 			return HttpResponsePermanentRedirect(conversation.get_absolute_url())
 
@@ -42,7 +44,6 @@ def new_message(request, id):
 	profile = get_object_or_404(Profile, pk=id)
 	receiver = profile.user
 	conversation = None
-
 	if conversation == None:
 		try:
 			conversation = Conversation.objects.get(sender=request.user, receiver=receiver)
@@ -67,6 +68,10 @@ def new_message(request, id):
 			item.author = request.user
 			item.save()
 			return view_conversation(request, conversation.pk)
-
 	return render(request, 'inbox/form.html', {'form':form})
+
+
+def new_notification(actionType, target_recip, target_send):
+	notification = Notification(actionType=actionType,target_recipient=target_recip,target_sender=target_send,seen=False)
+	notification.save()
 

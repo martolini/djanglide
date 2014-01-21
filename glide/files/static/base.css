@@ -12,6 +12,44 @@ body {
 	background-color: #ffffff;
 	font-weight: bold;
 }
+.notification-bubble{
+	width:30px;
+	height:30px;
+	border-radius: 25px;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+	margin-left:10px;
+}
+#notification-bubble-red {
+	background-color: red;
+}
+#notification-bubble-blue {
+	background-color: blue;
+}
+.notification-bubble > p{
+	margin: auto;
+	margin-top: 15%;
+}
+.notification-bubble:hover{
+	cursor: pointer;
+}
+#notification-list{
+	position: absolute;
+	z-index: 10;
+	width:20%;
+	height: 300px;
+	margin-top: 10px;
+	display: none;
+	background-color: white;
+}
+.notification{
+	width:100%;
+	height:60px;
+	background-color: red;
+	border: 1px solid black;
+}
 #top-bar {
 	float: center;
 	height: 80px;

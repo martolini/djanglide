@@ -13,6 +13,17 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "glide.core.notifications.notification-processors.notifications",
+)
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -52,9 +63,9 @@ INSTALLED_APPS = (
 
     'sorl.thumbnail',
     'markup_deprecated',
-
     'glide.core',
     'glide.core.profiles',
+    'glide.core.notifications',
 
     'glide.app',
     'glide.app.landing',

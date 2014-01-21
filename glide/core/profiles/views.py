@@ -5,7 +5,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-
 from glide.core.profiles.forms import OccupationForm, PhotoForm, ProfileForm
 from glide.core.profiles.models import Occupation
 from glide.core.models import City
