@@ -8,7 +8,7 @@ from django.contrib import auth
 from glide.core.profiles.forms import OccupationForm, PhotoForm, ProfileForm
 from glide.core.profiles.models import Occupation
 from glide.core.models import City
-
+from glide.app.inbox.views import new_notification
 @login_required
 def be_local(request):
 	profile = get_object_or_404(Profile, user=request.user)
@@ -63,10 +63,12 @@ def be_local(request):
 				if not profile.city.has_local:
 					profile.city.has_local = True
 					profile.city.save()
+				new_notification("local",request.user,request.user)
 			else:
 				city = profile.city
 				if len(Profile.objects.filter(city=city)) == 1:
 					city.has_local = False
+				new_notification("non-local",request.user,request.user)
 			profile.local = not profile.is_local()
 			profile.save()
 			return redirect(profile)
@@ -74,7 +76,6 @@ def be_local(request):
 												 'form': form,
 												 'interests': interests,
 												})
-
 
 def auth_view(request):
 	if not request.POST:

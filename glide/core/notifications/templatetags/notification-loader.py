@@ -4,7 +4,7 @@ from glide.core.notifications.models import Notification
 
 register = Library()
 
-@register.simple_tag
-def mark_as_read():
-	unread_notifications = Notification.objects.filter(seen=False)
-	unread_notifications.mark_as_seen()
+@register.inclusion_tag('templatetags/notifications.html', takes_context=True)
+def load_notifications(context, profile):
+	notifications = Notification.objects.filter(target_recipient=profile,seen=False)
+	return {'notifications':notifications}

@@ -34,8 +34,6 @@ def reply(request):
 			item.author = request.user
 			item.save()
 			conversation = item.conversation
-			new_notification("message",conversation.sender,conversation.receiver)
-			print "Sent notification"
 			conversation.save()
 			return HttpResponsePermanentRedirect(conversation.get_absolute_url())
 

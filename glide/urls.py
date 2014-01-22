@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^mission/', include('glide.app.mission.urls')),
     url(r'^team/', include('glide.app.team.urls')),
     url(r'^contact/', include('glide.app.contact.urls')),
+    url(r'^notifications/read$', 'glide.core.notifications.views.mark_as_read'),
 )
 
 urlpatterns += patterns('',

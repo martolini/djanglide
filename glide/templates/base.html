@@ -40,29 +40,26 @@
 							<a href="{% url 'be_local' %}" class="dropdown-button">{% trans "Unlist yourself" %}</a>
 						{% endif %}						
 						<a href="{% url 'inbox' %}" class="dropdown-button">{% trans "Inbox" %} {% count_all_unread_messages user %}</a>
-						<!-- <a href="#" class="dropdown-button" >{% trans "Change password" %}</a> -->
 						<a href="/profile/logout" class="dropdown-button">{% trans "Logout" %}</a>
 						</div>
-						{% mark_as_read %}
-						{% if notifications %}
-						<div id="notification-bubble-red" class="notification-bubble">
-							<p>{{ notifications.count }}</p>
-							<div id="notification-list">
-								{% for notification in notifications %}
-								<div class="notification">
-									<p>{{ notification.get_noti_string }}
-								</div>
-								{% endfor %}
-							</div>
-						</div>
-						{% else %}
-						<div id="notification-bubble-blue" class="notification-bubble">
-							<p>0</p>
-							<div id="notification-list">
-								<p>NO NOTIFICATIONS</p>
-							</div>
-						</div>
-						{% endif %}
+						{% load_notifications user %}
+						<script>
+							var alreadyRead = false;
+							function read() {
+							    $.getJSON("/notifications/read", { pk:{{ user.pk }} }, function(json){
+							      alert("Was successful?: " + json['success']);
+							    });
+							}
+							function addClickHandlers() {
+							    $(".notification-bubble").click( function() {
+							    	if(!alreadyRead){ 
+								    	read()
+								    	alreadyRead = true;
+								    }
+								});
+							}
+							$(document).ready(addClickHandlers);
+						</script>
 				</div>
 				{% endif %}
 				<div id="top-menu-right-text">

@@ -1,9 +1,11 @@
 var $notlist = $("#notification-list");
 var $notbubble = $(".notification-bubble");
 var toggle = true;
+var alreadySeen = false;
 $(document).ready(function($) {
 	$notbubble.click(function() {
-
+    $notbubble.css('background-color', 'rgb(75,158,205)');
+    $(".notification-bubble > p").html('0');
  	  if(toggle){
          slideOut();
          toggle = false;
@@ -12,6 +14,11 @@ $(document).ready(function($) {
          slideIn();
          toggle = true;
      }
+     if(alreadySeen){
+      $("#notification-list").html('');
+     }
+     alreadySeen = true;
+
  });
 });
 function slideOut(){

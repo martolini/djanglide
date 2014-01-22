@@ -10,7 +10,7 @@ class Notification(models.Model):
 		return self.target_recipient
 
 	def mark_as_seen(self):
-		self.seen = False
+		self.seen = True
 
 	def get_noti_string(self):
 		if(self.actionType=="message"):
@@ -19,5 +19,7 @@ class Notification(models.Model):
 			return self.target_sender.get_full_name() + " reviewed you"
 		elif(self.actionType=="local"):
 			return "You have just become a local!"
+		elif(self.actionType=="non-local"):
+			return "You have just resigned from being a local!"
 		else:
 			return "Nothing"
