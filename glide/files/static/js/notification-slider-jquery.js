@@ -1,6 +1,7 @@
 var $notlist = $("#notification-list");
 var $notbubble = $(".notification-bubble");
 var toggle = true;
+var variable = 1;
 var alreadySeen = false;
 $(document).ready(function($) {
 	$notbubble.click(function() {
@@ -9,13 +10,14 @@ $(document).ready(function($) {
  	  if(toggle){
          slideOut();
          toggle = false;
+
      }
      else{
          slideIn();
          toggle = true;
      }
      if(alreadySeen){
-      $("#notification-list").html('');
+      $("#notification-list").html('NO NOTIFICATIONS');
      }
      alreadySeen = true;
 
