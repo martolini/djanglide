@@ -9,6 +9,23 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 	<script src='//ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js' type='text/javascript'></script>
 	{% block include %}{% endblock %}
+	<script>
+		var alreadyRead = false;
+		function read() {
+		    $.getJSON("/notifications/read", { pk:{{ user.pk }} }, function(json){
+		      alert("Was successful?: " + json['success']);
+		    });
+		}
+		function addClickHandlers() {
+		    $(".notification-bubble").click( function() {
+		    	if(!alreadyRead){ 
+			    	read()
+			    	alreadyRead = true;
+			    }
+			});
+		}
+		$(document).ready(addClickHandlers);
+	</script>
 </head>
 
 <header>
@@ -28,6 +45,9 @@
 				</div>
 				{% else %}
 				<div id="top-menu-right-image">
+					{% load_notifications user %}
+				</div>
+				<!-- <div id="top-menu-right-image">
 					<label for="profile-menu">
 						<img src="{{ STATIC_URL }}img/account.png"/>
 					</label>
@@ -43,34 +63,31 @@
 						<a href="/profile/logout" class="dropdown-button">{% trans "Logout" %}</a>
 						</div>
 						{% load_notifications user %}
-						<script>
-							var alreadyRead = false;
-							function read() {
-							    $.getJSON("/notifications/read", { pk:{{ user.pk }} }, function(json){
-							      alert("Was successful?: " + json['success']);
-							    });
-							}
-							function addClickHandlers() {
-							    $(".notification-bubble").click( function() {
-							    	if(!alreadyRead){ 
-								    	read()
-								    	alreadyRead = true;
-								    }
-								});
-							}
-							$(document).ready(addClickHandlers);
-						</script>
 				</div>
+				-->
 				{% endif %}
 				<div id="top-menu-right-text">
-					{% if user.is_authenticated %}
-						<a href="/profile/logout" class="top-menu-right-login"><u>LOGOUT</u></a>
-					{% endif %}
-					<a href="{% url 'contact' %}" class="top-menu-right-button">{% trans "CONTACT" %}</a>
-					<a href="{% url 'marketplace' %}" class="top-menu-right-button">{% trans "MARKETPLACE" %}</a>
-					<a href="{% url 'mission' %}" class="top-menu-right-button">{% trans "ABOUT" %}</a>
-					<a href="{% url 'frontpage' %}" class="top-menu-right-button">{% trans "HOME" %}</a>
-				</div>
+                    {% if user.is_authenticated %}
+
+                        <a href="/profile/logout" class="top-menu-right-button"><u>{% trans "LOGOUT" %}</u></a>
+                        {% if not user.get_profile.is_local %}
+                                <a href="{% url 'be_local' %}" class="top-menu-right-button">{% trans "SIGN AS LOCAL" %}</a>
+                        {% else %}
+                                <a href="{% url 'be_local' %}" class="top-menu-right-button">{% trans "UNLIST YOURSELF" %}</a>
+                        {% endif %}
+                        <a href="{% url 'account' %}" class="top-menu-right-button">
+                                <div style="text-transform: uppercase;">{{ user.first_name }} {% count_all_unread_messages user %}</div>
+                        </a>
+                        <a href="{% url 'inbox' %}" class="top-menu-right-button">
+                                <img src="{{ STATIC_URL }}img/profile/mail.png"/>
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'contact' %}" class="top-menu-right-button" {% if user.is_authenticated %} style="border-right: 2px dotted #434a54; padding-right: 20px;" {% endif %}>{% trans "CONTACT" %}</a>
+                    <!-- <a href="{% url 'team' %}" class="top-menu-right-button">{% trans "THE TEAM" %}</a> -->
+                    <a href="{% url 'marketplace' %}" class="top-menu-right-button">{% trans "MARKETPLACE" %}</a>
+                    <a href="{% url 'mission' %}" class="top-menu-right-button">{% trans "ABOUT" %}</a>
+                    <a href="{% url 'frontpage' %}" class="top-menu-right-button">{% trans "HOME" %}</a>
+            	</div>
 			</div>
 		</div>
 	</div>

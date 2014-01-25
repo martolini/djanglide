@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from glide.core.profiles.models import Profile
 from django.http import HttpResponsePermanentRedirect
-from glide.app.inbox.views import new_notification
+from glide.core.notifications.views import new_notification
 @login_required
 def add(request, username):
 	user = get_object_or_404(User, username=username)

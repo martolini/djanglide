@@ -4,6 +4,7 @@ from django.template import RequestContext
 
 from glide.core.profiles.forms import LandingRegistrationForm
 from glide.core.profiles.models import Profile
+from glide.app.marketplace.forms import SearchForm
 
 def frontpage(request):
 	try:
@@ -15,6 +16,7 @@ def frontpage(request):
 		example_profile = False
 
 	form = LandingRegistrationForm()
+	search_form = SearchForm()
 
 	if request.method == 'POST':
 		d = request.POST.copy()
@@ -31,4 +33,5 @@ def frontpage(request):
 				pass
 	return render_to_response('landing/base.html', {
 		'example_profile':example_profile,
-	    'form': form}, RequestContext(request))
+	    'form': form,
+	    'search_form': search_form}, RequestContext(request))

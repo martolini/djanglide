@@ -11,7 +11,8 @@ class SearchForm(Form):
 		except:
 			default = False
 		super(SearchForm, self).__init__(*args, **kwargs)
-		cities = City.objects.filter(has_local=True).order_by('name')
+		cities = City.objects.filter(has_local=True).exclude(name=u'').order_by('name')
+		#cities = [city for city in cities if city.name]
 		self.fields['query'].choices = [(city.pk, city) for city in cities]
 		if not default:
 			self.fields['query'].choices.insert(0, ('',"I'm looking for a guide in..." ) )

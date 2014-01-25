@@ -31,52 +31,59 @@
 			</div>
 		{% endif %}
 		<div id="landing-header-text">
-			<h1>{% trans "Spice things up" %}!</h1>
-			<p>{% trans "Experience your destination city" %}</p>
-			<p>{% trans "with the company of someone who lives there" %}</p>
 			{% if not user.is_authenticated %}
-			<form id="sign-up-form" action="{% url 'frontpage' %}" method="POST">
-				{% csrf_token %}
-				{{ form.username.errors }}
-				<input type="text" name="username" placeholder="Username"><br>
-				<input type="text" name="first_name" placeholder="First name">
-				<input type="text" name="last_name" placeholder="Last name">
-				{% if form.email.errors %}
-				{{ form.email.errors }}
-				{% endif %}
-				<input type="text" name="email" placeholder="Your email"><br>
-				{% if form.password1.errors %}
-				<ul><li>This field is required.</ul></li>
-				{% endif %}
-				<input type="password" name="password" placeholder="New password"><br>
-				<input type="submit" class="blue-button" value="Get started">
-			</form>
-			<p id="learn-more">
-				{% trans "I want to learn" %}
-				<a href="{% url 'mission' %}">
-					{% trans "more" %}
-				</a>
-			<p>
+				<h1>{% trans "It's no longer about what you know, it's who you know." %}</h1>
+				<p>{% trans "Let us open the door of opportunity for you!" %}</p>
+				<form id="sign-up-form" action="{% url 'frontpage' %}" method="POST">
+					{% csrf_token %}
+					<input type="text" name="username" placeholder="Username"><br>
+					{% if form.username.errors %}
+						<ul><li>{{ form.username.errors }}</li></ul>
+					{% endif %}
+					<input type="text" name="first_name" placeholder="First name">
+					<input type="text" name="last_name" placeholder="Last name">
+					<input type="text" name="email" placeholder="Your email"><br>
+					{% if form.email.errors %}
+						{{ form.email.errors }}
+					{% endif %}
+					<input type="password" name="password" placeholder="New password"><br>
+					{% if form.password1.errors %}
+						<ul><li>This field is required.</ul></li>
+					{% endif %}
+					<input type="submit" class="blue-button" value="Get started">
+				</form>
+				<p id="learn-more">
+					{% trans "I want to learn" %}
+					<a href="{% url 'mission' %}">
+						{% trans "more" %}
+					</a>
+				<p>
+			{% else %}
+				<h1>{% trans "It's no longer about what you know, it's who you know." %}</h1><br>
+				<p>{% trans "Let us open the door of opportunity for you!" %}</p>
+			    <form action="{% url 'search_marketplace' %}" id="landing-search-form">
+			        {% for field in search_form %}
+			            {{ field }}
+			        {% endfor %}
+			        <input type="submit" class="blue-button" value="{% trans "Show me" %}">
+			    </form>
 			{% endif %}
 		</div>
 	</div>
 </div>
 <div id="fade-spacer"></div>
-<div id="arrow-section">
-		<h3>WHAT AM I GETTING INTO?</h3>
-</div>
 <div id="landing-about">
 			<div class = "para-div" id="sec1">
-			<h1>Our Problem</h1>
-			<p id="footer-about-paragraph">Since the commercialization of the Internet, face-to-face social interaction has been increasingly marginalized. The rise of social networks like Facebook, Twitter, and so many others, allows us to stay connected to the people we already know, but instead of going out and meeting these new people, we’re sitting behind a screen.</p>
+			<h1>The Problem</h1>
+			<p id="footer-about-paragraph">Since the commercialization of the Internet, face-to-face social interaction has been marginalized. The rise of social networks like Facebook and Twitter, allow us to stay connected to the people we already know, but instead of going out and meeting new people, we’re just sitting behind a screen.</p>
 			</div>
 			<div class = "para-div" id="sec2">
-			<h1>Why now?</h1>
-			<p id="footer-about-paragraph">The world is changing. It's no longer about what you know but who you know.</p>
+			<h1>Our Solution</h1>
+			<p id="footer-about-paragraph">In order to bring face-to-face social interaction back, we built a platform to help you find like-minded individuals you can meet up with. Meet up for coffee, discuss politics, concieve of how your going to change the world, we just ask that you do it face-to-face!</p>
 			</div>
 			<div class = "para-div" id="sec3">
-			<h1>Solution</h1>
-			<p id="footer-about-paragraph">Glide is a platform that helps you find like-minded individuals to meet up with</p>
+			<h1>Why Now?</h1>
+			<p id="footer-about-paragraph">The world is changing. It's no longer about what you know but who you know. Glidewith.us can help you open doors of opportunity you never even thought existed.</p>
 			</div>
 </div>
 {% endblock %}

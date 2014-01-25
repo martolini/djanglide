@@ -24,9 +24,8 @@ textarea {
 	padding: 5px;
 	width: 95%;
 	resize: none;
-}
-input[value=Submit] {
-	width: 98%;
+	color: #434a54;
+	font-family: 'Open Sans', sans-serif;
 }
 #contact-form {
 	width: 50%;
@@ -54,11 +53,12 @@ label[for=id_abstract] {
 	display: none;
 }
 #contact-form form {
-	text-align: center;
 	background-color: #eeeef3;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	padding: 10px;
-	border: 1px solid black;
+}
+#contact-form h2 {
+	text-align: center;
 }

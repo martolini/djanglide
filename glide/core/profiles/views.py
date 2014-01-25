@@ -8,7 +8,9 @@ from django.contrib import auth
 from glide.core.profiles.forms import OccupationForm, PhotoForm, ProfileForm
 from glide.core.profiles.models import Occupation
 from glide.core.models import City
-from glide.app.inbox.views import new_notification
+from glide.core.notifications.views import new_notification
+
+
 @login_required
 def be_local(request):
 	profile = get_object_or_404(Profile, user=request.user)

@@ -35,6 +35,10 @@
 	float: left;
 	text-transform: uppercase;
 }
+#filters {
+	max-height: 350px;
+	overflow-y: scroll;
+}
 #filter-box li {
 	margin-bottom: 7px;
 	margin-left: 0px;
@@ -83,11 +87,11 @@
 	border-radius: 75px;
 }
 #result-content {
-	margin-top: 5px;
+	margin-top: 25px;
 	word-wrap: break-word;
 	float: left;
 	width: 170px;
-	height: 120px;
+	height: 100px;
 	overflow: hidden;
 	font-size: 12px;
 }

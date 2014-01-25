@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from glide.core.profiles.models import Profile, Occupation
 from glide.core.models import City
-
+import re
 class LandingRegistrationForm(UserCreationForm):
 
 	first_name = forms.CharField()
@@ -26,6 +26,16 @@ class LandingRegistrationForm(UserCreationForm):
 			user.save()
 			Profile(user=user).save()
 		return user
+
+	def clean(self):
+		super(LandingRegistrationForm, self).clean()
+		if self.cleaned_data.get('username'):
+			valid = re.match('^[\w-]+$', self.cleaned_data.get('username')) is not None
+			if not valid:
+				self._errors['username'] = "Only alphanumeric characters in username"
+		return self.cleaned_data
+
+
 
 class OccupationForm(ModelForm):
 	name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'New occupation'}))
@@ -65,6 +75,7 @@ class ProfileForm(ModelForm):
 		self.fields['country'].initial = profile.country
 		self.fields['state'].initial = profile.state
 		self.fields['photo'].initial = profile.photo
+		self.fields['photo'].widget = forms.FileInput()
 		try:
 			self.fields['new_occupation'].initial = profile.occupation_set.all()[0]
 		except:

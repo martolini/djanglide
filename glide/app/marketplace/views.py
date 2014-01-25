@@ -8,8 +8,9 @@ from glide.core.models import City
 from math import ceil
 
 def marketplace(request):
-	search_form = SearchForm()
-	return render(request, 'marketplace/base.html', {'search_form':search_form})
+	#search_form = SearchForm()
+	#return render(request, 'marketplace/base.html', {'search_form':search_form})
+	return search(request)
 
 def search(request):
 	query = request.GET.get('query')
@@ -22,8 +23,11 @@ def search(request):
 	if query:
 		results = Profile.objects.filter(local=True, city__id=query).order_by('user__first_name')
 		hits = len(results)
+	else:
+		results = Profile.objects.filter(local=True).order_by('user__first_name')
+		hits = len(results)
 
-	if hits:
+	if hits and query:
 		for result in results:
 			interests = result.interest_set.all()
 			occupations = result.occupation_set.all()

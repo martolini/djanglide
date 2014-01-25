@@ -11,10 +11,10 @@ urlpatterns = patterns('',
     url(r'^inbox/', include('glide.app.inbox.urls')),
     url(r'^marketplace/', include('glide.app.marketplace.urls')),
     url(r'^interests/', include('glide.app.interests.urls')),
-    url(r'^mission/', include('glide.app.mission.urls')),
+    url(r'^about/', include('glide.app.mission.urls')),
     url(r'^team/', include('glide.app.team.urls')),
     url(r'^contact/', include('glide.app.contact.urls')),
-    url(r'^notifications/read$', 'glide.core.notifications.views.mark_as_read'),
+    url(r'^notifications/', include('glide.core.notifications.urls')),
 )
 
 urlpatterns += patterns('',

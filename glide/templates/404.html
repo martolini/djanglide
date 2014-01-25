@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block include %}
+	<link href="{{ STATIC_URL }}mission.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="mission-body">
+	<div class="white-block" id="mission">
+		<h2>{% trans "404 - Page not found" %}</h2>
+	</div>
+</div>
+
+{% endblock %}

@@ -16,8 +16,12 @@
 	<div id="profile-left">
 		<div class="white-block" id="profile-photo">
 			<div id="profile-photo-menu">
-				<a href="#"><img src="{{ STATIC_URL }}img/profile/profile-photo-chosen.png"/></a>
-				<a href="#"><img src="{{ STATIC_URL }}img/profile/location.png"/></a>
+				<!-- <a href="#"> -->
+					<img src="{{ STATIC_URL }}img/profile/profile-photo-chosen.png"/>
+				<!-- </a> -->
+				<!-- <a href="#"> -->
+					<img src="{{ STATIC_URL }}img/profile/location.png"/>
+				<!-- </a> -->
 			</div>
 			<div id="profile-photo-image">
 				{% if profile.photo == '' %}
@@ -100,8 +104,7 @@
 		{% if user != profile.user %}
 			<div class="white-block" id="contact">
 				<div id="contact-top">
-					<h2>{% trans "Contact user" %}</h2>
-					<h3>{% trans "You can say hi here" %}...</h3>
+					<h2>Find {{profile.user.first_name}} interesting?</h2>
 					<hr>
 				</div>
 	<!-- 			<div style="float: left; width: 100%; margin-bottom: 10px;">
@@ -127,16 +130,9 @@
 				<br>
 				<div id="contact-new-message">
 						<a href="{% url 'new_message' profile.pk %}" style="color: #ffffff;" id="new-message-button">
-							{% trans "Send message" %}
+							{% trans "Send him a message" %}
 						</a>
 				</div>
-				</br>
-				</br>
-				<div id="book-local">
-						<div href="" style="color: #ffffff;" id="book-local-button">
-							{% trans "Book!" %}
-						</div>
-				</div>	
 			</div>
 		{% endif %}
 
@@ -148,7 +144,7 @@
 			{% else %}
 				<h3>
 					{% if interests %}
-						{% trans "These are" %} {{ profile.user.first_name }}s...
+						{{ profile.user.first_name }} {% trans "knows about" %}
 						<hr>
 					{% else %}
 						{{ profile.user.first_name }} {% trans "has not listed any interests" %}.
@@ -168,9 +164,6 @@
 			{% endif %}
 		</div>
 	</div>
-</div>
-<div id="pop-up-book">
-		<h2>MEETUP </h2>
 </div>
 
 {% endblock %}

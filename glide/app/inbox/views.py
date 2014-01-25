@@ -68,8 +68,3 @@ def new_message(request, id):
 			return view_conversation(request, conversation.pk)
 	return render(request, 'inbox/form.html', {'form':form})
 
-
-def new_notification(actionType, target_recip, target_send):
-	notification = Notification(actionType=actionType,target_recipient=target_recip,target_sender=target_send,seen=False)
-	notification.save()
-

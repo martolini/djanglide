@@ -10,15 +10,16 @@
 	<div class="white-block" id="contact">
 		<div id="contact-text">
 			<h2>Contact us</h2>
-			<p>Hi, if you want to contact us, this is the place to do it.</p>
-			<p>Also we would like to hear about improvements you'd like on this site.</p>
+			<p>How do you like V1 of Glide?</p>
+			<p>We’re still in our early beta stage and are open to your feedback!</p>
+			<p>Let us know how we can make Glidewith.us as awesome as possible!</p>
 		</div>
 		<div id="contact-form">
 			<form method="post">
 				<h2>{% trans "Contact form" %}</h2>
 				{% csrf_token %}
 				{{ form }}<br/>
-				<input type="submit" value="{% trans "Submit" %}">
+				<input type="submit" class="green-button" value="{% trans "Submit form" %}">
 			</form>
 		</div>
 	</div>

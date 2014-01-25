@@ -1,23 +1,32 @@
 import os
+import socket
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = 'g3o7_e)t+xh9u#hrju^ce9exzxivm^u9@mozuxdk1tco!t1xxy'
 
-DEBUG = True
+HOSTNAME = socket.gethostname()
 
-TEMPLATE_DEBUG = True
+if 'dijkstra' in HOSTNAME:
+    from glide.settings.production import *
+else:
+    DEBUG = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
-ALLOWED_HOSTS = []
+TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['glide.msroed.net']
+
+SITE_URL = 'glide.msroed.net'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'registerforglide@gmail.com'
-EMAIL_HOST_PASSWORD = 'RegisterGlide'
 
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
@@ -26,6 +35,8 @@ LOGIN_URL = '/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files/uploads')
 MEDIA_URL = '/uploads/'
+
+STATIC_ROOT = '/home/glide/web/glidestatic'
 
 STATIC_URL = '/static/'
 
@@ -52,6 +63,7 @@ INSTALLED_APPS = (
 
     'sorl.thumbnail',
     'markup_deprecated',
+
     'glide.core',
     'glide.core.profiles',
     'glide.core.notifications',
@@ -80,9 +92,3 @@ ROOT_URLCONF = 'glide.urls'
 
 WSGI_APPLICATION = 'glide.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
