@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from glide.core.profiles.models import Profile, Occupation
 from glide.core.models import City
-import re
 class LandingRegistrationForm(UserCreationForm):
 
 	first_name = forms.CharField()
