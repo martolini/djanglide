@@ -1,6 +1,10 @@
 from django.template.base import Library
-from glide.app.inbox.forms import ReplyMessageForm
-from glide.app.inbox.models import Message, Conversation
+from glide.app.booking.forms import BookForm
 from django.db.models import Q
 
 register = Library()
+
+@register.inclusion_tag('booking/templatetags/book-form.html')
+def load_book_form():
+	form = BookForm()
+	return {'form':form}

@@ -6,6 +6,7 @@
 {% load interests %}
 {% load profiles %}
 {% load inbox %}
+{% load booking %}
 
 {% block include %}
 	<link href="{{ STATIC_URL }}profile.css" media="screen" rel="stylesheet">
@@ -173,6 +174,10 @@
 	</div>
 </div>
 <div id="pop-up-book">
+		<div id="close-pop-up">
+			<p>X</p>
+		</div>
 		<h2>MEETUP</h2>
+		{% load_book_form %}
 </div>
 {% endblock %}

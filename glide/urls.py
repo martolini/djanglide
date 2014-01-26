@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^team/', include('glide.app.team.urls')),
     url(r'^contact/', include('glide.app.contact.urls')),
     url(r'^notifications/', include('glide.core.notifications.urls')),
+    url(r'^book/', include('glide.app.booking.urls')),
 )
 
 urlpatterns += patterns('',

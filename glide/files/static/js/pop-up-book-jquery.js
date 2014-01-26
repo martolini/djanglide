@@ -1,13 +1,19 @@
 $(document).ready(function($) {
-	$("body").click(function(e) {
- 	  var elClicked = e.target;
-      if($(elClicked).is('#book-local-button')){
+	// $("body").click(function(e) {
+ // 	  var elClicked = e.target;
+ //      if($(elClicked).is('#book-local-button')){
+ //            startPopup();
+ //      }
+ //      else if(!($(elClicked).is('#pop-up-book')) &&  !($(elClicked).is('#book-local-button'))) {
+ //         	closePopup();
+ //      }
+ // });
+       $('#book-local-button').click(function(){
             startPopup();
-      }
-      else if(!($(elClicked).is('#pop-up-book')) &&  !($(elClicked).is('#book-local-button'))) {
-         	closePopup();
-      }
- });
+       });
+       $('#close-pop-up').click(function(){
+            closePopup();
+       })
 });
 function startPopup(){
 		$("#pop-up-book").fadeTo('400', 1.0);

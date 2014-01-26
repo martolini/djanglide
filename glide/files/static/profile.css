@@ -266,13 +266,32 @@ h3 {
 	width: 200px;
 	color: #ffffff;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 #contact-new-message {
 	float: left;
 	margin-bottom: 10px;
 	width: 500px;
 }
-
+#close-pop-up {
+	width:20px;
+	height:20px;
+	border-radius: 20px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	position: absolute;
+	top: -5px;
+	right:-5px;
+}
+#close-pop-up > p{
+	font-size: 10px;
+	margin-top:3px;
+}
+#close-pop-up:hover{
+	cursor: pointer;
+	opacity: .7;
+}
 #profile-photo-image-form {
 	position: absolute;
 	left: 200px;
