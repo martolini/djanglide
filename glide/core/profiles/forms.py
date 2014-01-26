@@ -28,10 +28,10 @@ class LandingRegistrationForm(UserCreationForm):
 
 	def clean(self):
 		super(LandingRegistrationForm, self).clean()
-		if self.cleaned_data.get('username'):
-			valid = re.match('^[\w-]+$', self.cleaned_data.get('username')) is not None
-			if not valid:
-				self._errors['username'] = "Only alphanumeric characters in username"
+		#if self.cleaned_data.get('username'):
+		#	valid = re.match('^[\w-]+$', self.cleaned_data.get('username')) is not None
+		#	if not valid:
+		#		self._errors['username'] = "Only alphanumeric characters in username"
 		return self.cleaned_data
 
 

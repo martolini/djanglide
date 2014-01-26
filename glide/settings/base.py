@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'glide.core.notifications',
 
     'glide.app',
+    'glide.app.booking',
     'glide.app.landing',
     'glide.app.inbox',
     'glide.app.testimonial',
