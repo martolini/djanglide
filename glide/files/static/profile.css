@@ -234,12 +234,45 @@ h3 {
 	border-radius:6px;
 	padding: 10px;
 	color: #ffffff;
+	display: inline-block;
+	width: 200px;
+	text-transform: uppercase;
+}
+#pop-up-book{
+	background-color: white;
+	margin-left: 30%;
+	margin-right: 0;
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	opacity: 0.0;
+	box-shadow: 0px 0px 10px 0px #36bc9a;
+	text-align: center;
+}
+#pop-up-book > h2{
+	margin-top: 15px;
+
+}
+#book-local-button{
+	-moz-box-shadow: 0px 0px 2px 0px #36bc9a;
+	-webkit-box-shadow: 0px 0px 2px 0px #36bc9a;
+	box-shadow: 0px 0px 2px 0px #36bc9a;
+	background-color:#48bc9b;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	padding: 10px;
+	display: inline-block;
+	width: 200px;
+	color: #ffffff;
 	text-transform: uppercase;
 }
 #contact-new-message {
 	float: left;
 	margin-bottom: 10px;
+	width: 500px;
 }
+
 #profile-photo-image-form {
 	position: absolute;
 	left: 200px;
