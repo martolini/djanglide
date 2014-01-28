@@ -1,9 +1,41 @@
 {% load i18n %}
+{% block include %}
+	<link rel="stylesheet" class="theme-link" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/start/jquery-ui.css" type="text/css" media="screen" />
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	    <script>
+			  $(function() {
+			    $( "#datepicker" ).datepicker({
+			      changeMonth: true,
+			      changeYear: true,
+			      yearRange: "1900:2012",
+			      // You can put more options here.
 
+			    });
+			  });
+			  $(function() {
+			    $( "#timepicker" ).timepicker({
+			      // You can put more options here.
+
+			    });
+			  });
+		</script>
+{% endblock %}
 <form method="POST" action="{% url 'book_profile' %}">
 	<div id="book-form-body">
 		{% csrf_token %}
-		{{ form }}
+		{{ form.date.label_tag }}
+		{{ form.date }}
+		</br>
+		</br>
+		</br>
+		{{ form.startTime.label_tag }}
+		{{ form.startTime }}
+		</br>
+		</br>
+		</br>
+		{{ form.message.label_tag }}
+		{{ form.message }}
 		</div>
+		<input type="submit" value="Book!" />
 	</div>
 </form>

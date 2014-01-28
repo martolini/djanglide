@@ -1,9 +1,0 @@
-{% load i18n %}
-
-<form method="POST" action="{% url 'book_profile' %}">
-	<div id="book-form-body">
-		{% csrf_token %}
-		{{ form }}
-		</div>
-	</div>
-</form>

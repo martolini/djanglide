@@ -1,13 +1,17 @@
 from django.forms.models import ModelForm
 from django.utils.translation import ugettext_lazy as _
 from django import forms
-from django.contrib.auth.models import User
-from glide.app.booking.models import Booked
-from glide.app.booking.fields import JqSplitDateTimeField
-from glide.app.booking.widgets import JqSplitDateTimeWidget
+from glide.app.booking.models import Meetup
 class BookForm(ModelForm):
-	message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Send a message to let them know about your visit!'}))
-
+	date = forms.DateField(widget=forms.TextInput(attrs=
+                                {
+                                    'id':'datepicker'
+                                }))
+	startTime = forms.TimeField(widget=forms.TextInput(attrs=
+                                {
+                                    'id':'timepicker'
+                                }),label="Start Time")
+	message = forms.CharField(label="Message",widget=forms.Textarea)
 	class Meta:
-		model = Booked
-		exclude = ('target_sender','target_recipient',)
+		model = Meetup
+		exclude = ('target_sender','target_recipient','seen',)
