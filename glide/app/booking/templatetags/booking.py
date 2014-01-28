@@ -5,6 +5,6 @@ from django.db.models import Q
 register = Library()
 
 @register.inclusion_tag('booking/templatetags/book-form.html')
-def load_book_form():
+def load_book_form(profile):
 	form = BookForm()
-	return {'form':form}
+	return {'form':form,'profile':profile}
