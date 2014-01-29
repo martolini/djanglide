@@ -20,7 +20,7 @@
 			  });
 		</script>
 {% endblock %}
-<form method="POST" action="{% url 'book_profile' profile.pk %}">
+<form method="post" action="{% url 'book_profile' profile.pk %}">
 	<div id="book-form-body">
 		{% csrf_token %}
 		{{ form.date.label_tag }}

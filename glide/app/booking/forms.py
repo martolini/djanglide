@@ -6,11 +6,11 @@ class BookForm(ModelForm):
 	date = forms.DateField(widget=forms.TextInput(attrs=
                                 {
                                     'id':'datepicker'
-                                }))
+                                }),input_formats=['%m/%d/%Y',])
 	startTime = forms.TimeField(widget=forms.TextInput(attrs=
                                 {
                                     'id':'timepicker'
-                                }),label="Start Time")
+                                }),label="Start Time",input_formats=['%I:%M%p',])
 	message = forms.CharField(label="Message",widget=forms.Textarea)
 	class Meta:
 		model = Meetup
