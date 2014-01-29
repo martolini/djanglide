@@ -16,3 +16,6 @@ def book_profile(request,id):
             new_notification.save()
         print form.errors
     return redirect(Profile.objects.get(user=request.user))
+
+def book_requests(request):
+    return redirect(Profile.objects.get(user=request.user))

@@ -71,6 +71,7 @@
                     {% if user.is_authenticated %}
 
                         <a href="/profile/logout" class="top-menu-right-button"><u>{% trans "LOGOUT" %}</u></a>
+                        <a href="{% url 'book_requests' %}" class="top-menu-right-button">{% trans "BOOKINGS" %}</a>
                         {% if not user.get_profile.is_local %}
                                 <a href="{% url 'be_local' %}" class="top-menu-right-button">{% trans "SIGN AS LOCAL" %}</a>
                         {% else %}
