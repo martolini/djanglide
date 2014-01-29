@@ -11,12 +11,11 @@ def mark_as_read(request):
 			for notification in notifications:
 				notification.mark_as_seen()
 				notification.save()
-				print "Hello"
 			results = {'success':True}
 	json = simplejson.dumps(results)
 	return HttpResponse(json, mimetype='application/json')
 
 
 def new_notification(actionType, target_recip, target_send):
-	notification = Notification(actionType=actionType,target_recipient=target_recip,target_sender=target_send,seen=False)
+	notification = Notification(actionTwype=actionType,target_recipient=target_recip,target_sender=target_send,seen=False)
 	notification.save()
