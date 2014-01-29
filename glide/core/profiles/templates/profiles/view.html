@@ -102,7 +102,8 @@
 			</div>
 		{% endif %}
 
-		{% if user != profile.user %}
+		{% if user != profile.user%}
+			{% if user.is_authenticated %}
 			<div class="white-block" id="contact">
 				<div id="contact-top">
 					<h2>Find {{profile.user.first_name}} interesting?</h2>
@@ -140,8 +141,20 @@
 						<div href="" style="color: #ffffff;" id="book-local-button">
 							{% trans "Book!" %}
 						</div>
-				</div>	
+				</div>
 			</div>
+			{% else %}
+			<div class="white-block" id="contact">
+				<div id="contact-top">
+					<h2>Find {{profile.user.first_name}} interesting?</h2>
+					<hr>
+				</div>
+				<br>
+				<div id="contact-new-message">
+						<p>Login to book or send a message! </p>
+				</div>
+			</div>
+			{% endif %}
 		{% endif %}
 
 		<div class="white-block" id="interests-block">
