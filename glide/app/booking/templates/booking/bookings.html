@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load booking %}
+{% block include %}
+	<link href="{{ STATIC_URL }}bookings.css" media="screen" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="bookings-block">
+			{% load_bookings_request user %}
+</div>
+
+{% endblock %}

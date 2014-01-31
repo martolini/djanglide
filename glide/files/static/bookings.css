@@ -1,0 +1,69 @@
+#top-menu-content {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+hr{
+	clear: both;
+}
+#bookings-block{
+	width: 800px;
+	height: 700px;
+	overflow: auto;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+}
+.booking-single{
+	margin-left: 50px;
+	margin-right: 50px;
+}
+.booking-response-block {
+	background-color: white;
+	width: 200px;
+	text-align: center;
+	float:right;
+	clear: both;
+	margin-top: 20px;
+	margin-right: 50px;
+	margin-bottom: 10px;
+}
+.booking-info-block{
+	float: right;
+	margin-right: 50px;
+	margin-top: 25px;
+}
+.response-button > p{
+	vertical-align: top;
+	color: white;
+	font-size: .5em;
+}
+.response-button {
+	width:100px;
+	height:25px;
+}
+.booking-sender{
+	float: left;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.booking-message-block{
+	float: left;
+	margin-left: 50px;
+	margin-right: 50px;
+	clear:both;
+	width:300px;
+	margin-top: -25px;
+}
+.accept-button{
+	background-color: green;
+	float: right;
+	margin-right: 50px;
+	margin-top: -50px;
+}
+.decline-button{
+	float: right;
+	background-color: red;
+	margin-right: 50px;
+}

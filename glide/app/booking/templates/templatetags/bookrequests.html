@@ -1,0 +1,26 @@
+	{% if bookings %}
+	{% for booking in bookings %}
+	<div class="booking-single-block">
+		<h2 class="booking-sender">Booker: {{ booking.meetup.get_sender}}</h2>
+		<div class="booking-info-block">
+				<p class="booking-date">Ideal Date: {{ booking.meetup.date }}</p>
+				<p class="booking-time">Ideal Time: {{ booking.meetup.startTime }}</p>
+		</div>
+		<div class="booking-message-block">
+			<p class="booking-message">{{ booking.meetup.message }}</p>
+		</div>
+		<div class="booking-response-block">
+			<a class="accept-button response-button"><p>ACCEPT</p>
+			</a>
+			<a class="decline-button response-button"><p>DECLINE</p>
+			</a>
+		</div>
+	</div>
+	<hr>
+	<hr>
+	{% endfor %}
+	{% else %}
+	<div class="booking-single-block" style="text-align: center">
+		<p>NO BOOKING REQUESTS</p>
+	</div>
+	{% endif %}
