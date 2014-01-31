@@ -10,9 +10,9 @@
 			<p class="booking-message">{{ booking.meetup.message }}</p>
 		</div>
 		<div class="booking-response-block">
-			<a class="accept-button response-button"><p>ACCEPT</p>
+			<a href="{% url 'accept_button' booking.pk %}" class="accept-button response-button"><p>ACCEPT</p>
 			</a>
-			<a class="decline-button response-button"><p>DECLINE</p>
+			<a href="{% url 'decline_button' booking.pk %}"  class="decline-button response-button"><p>DECLINE</p>
 			</a>
 		</div>
 	</div>

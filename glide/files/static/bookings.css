@@ -3,6 +3,9 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+a:hover{
+	cursor: pointer;
+}
 hr{
 	clear: both;
 }

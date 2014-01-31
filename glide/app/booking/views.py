@@ -3,7 +3,7 @@ from glide.app.booking.forms import BookForm
 from django.http import HttpResponseRedirect
 from glide.core.profiles.models import Profile
 from glide.core.notifications.models import Notification
-from glide.app.booking.models import BookRequest
+from glide.app.booking.models import BookRequest, Meetup
 def book_profile(request,id):
     if request.method == 'POST':# If the form has been submitted...
         form = BookForm(request.POST)
@@ -23,3 +23,17 @@ def book_profile(request,id):
 
 def book_requests(request):
     return render(request, 'booking/bookings.html')
+
+def accept_button(request,id):
+    book_req = get_object_or_404(BookRequest, pk=id)
+    book_req.response = True
+    book_req.save()
+    meetup = get_object_or_404(Meetup, pk=book_req.get_meetup().pk)
+    return HttpResponseRedirect('/book/requests')
+
+def decline_button(request,id):
+    book_req = get_object_or_404(BookRequest, pk=id)
+    book_req.response = False
+    book_req.save()
+    meetup = get_object_or_404(Meetup, pk=book_req.get_meetup().pk)
+    return HttpResponseRedirect('/book/requests')
