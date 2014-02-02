@@ -29,11 +29,11 @@ def accept_button(request,id):
     book_req.response = True
     book_req.save()
     meetup = get_object_or_404(Meetup, pk=book_req.get_meetup().pk)
-    return HttpResponseRedirect('/book/requests')
+    return HttpResponseRedirect('/book/')
 
 def decline_button(request,id):
     book_req = get_object_or_404(BookRequest, pk=id)
     book_req.response = False
     book_req.save()
     meetup = get_object_or_404(Meetup, pk=book_req.get_meetup().pk)
-    return HttpResponseRedirect('/book/requests')
+    return HttpResponseRedirect('/book/')

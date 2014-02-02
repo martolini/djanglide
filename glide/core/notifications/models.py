@@ -36,6 +36,6 @@ class Notification(models.Model):
 		elif(self.actionType=="non-local"):
 			return 	"/profile/"
 		elif(self.actionType=="book"):
-			return 	"/book/requests/"
+			return 	"/book/"
 		else:
 			return "Nothing"
