@@ -6,7 +6,7 @@ class BookForm(ModelForm):
 	date = forms.DateField(widget=forms.TextInput(attrs=
                                 {
                                     'id':'datepicker'
-                                }),input_formats=['%m/%d/%Y',])
+                                }),input_formats=['%Y-%m-%d',])
 	startTime = forms.TimeField(widget=forms.TextInput(attrs=
                                 {
                                     'id':'timepicker'

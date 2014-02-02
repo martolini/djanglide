@@ -1,24 +1,28 @@
 {% load i18n %}
 {% block include %}
-	<link rel="stylesheet" class="theme-link" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/start/jquery-ui.css" type="text/css" media="screen" />
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	    <script>
-			  $(function() {
-			    $( "#datepicker" ).datepicker({
-			      changeMonth: true,
-			      changeYear: true,
-			      yearRange: "1900:2012",
-			      // You can put more options here.
-
-			    });
-			  });
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script>
+	  $(function() {
+	    $( "#datepicker" ).datepicker({
+	      defaultDate: '1990-01-01',
+	      yearRange: '1950:2010',
+	      dateFormat: 'yy-mm-dd',
+	      changeMonth: true,
+	      changeYear: true
+	    });
+	  });
+	  </script>
+	  <script>
 			  $(function() {
 			    $( "#timepicker" ).timepicker({
 			      // You can put more options here.
 
 			    });
 			  });
-		</script>
+	  </script>
 {% endblock %}
 <form method="post" action="{% url 'book_profile' profile.pk %}">
 	<div id="book-form-body">
