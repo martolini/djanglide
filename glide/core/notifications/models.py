@@ -25,3 +25,17 @@ class Notification(models.Model):
 			return "You have just been sent a book request by " + self.target_sender.get_full_name().title() + "!"
 		else:
 			return "Nothing"
+
+	def get_url_string(self):
+		if(self.actionType=="message"):
+			return 	"/inbox/"
+		elif(self.actionType=="review"):
+			return 	"/profile/"
+		elif(self.actionType=="local"):
+			return 	"/profile/"
+		elif(self.actionType=="non-local"):
+			return 	"/profile/"
+		elif(self.actionType=="book"):
+			return 	"/book/requests/"
+		else:
+			return "Nothing"

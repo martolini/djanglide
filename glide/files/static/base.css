@@ -34,6 +34,9 @@ body {
 .notification-bubble:hover{
 	cursor: pointer;
 }
+.notification:hover{
+	background-color: #eeeef3;
+}
 #notification-list{
 	position: absolute;
 	z-index: 10;

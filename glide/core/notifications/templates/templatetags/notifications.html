@@ -4,7 +4,7 @@
 	<div id="notification-list">
 		{% for notification in notifications %}
 		<div class="notification">
-			<p>{{ notification.get_noti_string }}
+			<a href="{{ notification.get_url_string }}"> <p>{{ notification.get_noti_string }}</p></a>
 		</div>
 		{% endfor %}
 	</div>
