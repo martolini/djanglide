@@ -47,24 +47,6 @@
 				<div id="top-menu-right-image">
 					{% load_notifications user %}
 				</div>
-				<!-- <div id="top-menu-right-image">
-					<label for="profile-menu">
-						<img src="{{ STATIC_URL }}img/account.png"/>
-					</label>
-					<input type="checkbox" id="profile-menu">
-					<div id="dropdown">
-						<a href="{% url 'account' %}" class="dropdown-button">{% trans "View Profile" %}</a>
-						{% if not user.get_profile.is_local %}
-							<a href="{% url 'be_local' %}" class="dropdown-button">{% trans "Sign as local" %}</a>
-						{% else %}
-							<a href="{% url 'be_local' %}" class="dropdown-button">{% trans "Unlist yourself" %}</a>
-						{% endif %}						
-						<a href="{% url 'inbox' %}" class="dropdown-button">{% trans "Inbox" %} {% count_all_unread_messages user %}</a>
-						<a href="/profile/logout" class="dropdown-button">{% trans "Logout" %}</a>
-						</div>
-						{% load_notifications user %}
-				</div>
-				-->
 				{% endif %}
 				<div id="top-menu-right-text">
                     {% if user.is_authenticated %}

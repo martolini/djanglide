@@ -1,19 +1,19 @@
 {% if notifications %}
 <div id="notification-bubble-red" class="notification-bubble">
 	<p>{{ notifications.count }}</p>
-	<div id="notification-list">
+</div>
+<div id="notification-list">
 		{% for notification in notifications %}
-		<div class="notification">
-			<a href="{{ notification.get_url_string }}"> <p>{{ notification.get_noti_string }}</p></a>
-		</div>
+		<a href="{{ notification.get_url_string }}"><div class="notification">
+			<p>{{ notification.get_noti_string }}</p>
+		</div></a>
 		{% endfor %}
-	</div>
 </div>
 {% else %}
 <div id="notification-bubble-blue" class="notification-bubble">
 	<p>0</p>
-	<div id="notification-list">
+</div>
+<div id="notification-list">
 		<p>NO NOTIFICATIONS</p>
-	</div>
 </div>
 {% endif %}
