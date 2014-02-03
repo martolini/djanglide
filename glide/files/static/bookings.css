@@ -6,17 +6,47 @@
 a:hover{
 	cursor: pointer;
 }
+#over-block{
+	margin-right: auto;
+	margin-left: auto;
+	width: 1350px;
+	height: 700px;
+	vertical-align: middle;
+
+}
 hr{
 	clear: both;
 }
-#bookings-block{
-	width: 800px;
+#new-bookings-block{
+	width: 300px;
 	height: 700px;
 	overflow: auto;
 	margin-top: 15px;
-	margin-left: auto;
-	margin-right: auto;
 	background-color: white;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+#calendar-block{
+	text-align: center;
+	width: 700px;
+	height: 700px;
+	overflow: auto;
+	margin-top: 15px;
+	margin-left: 20px;
+	margin-right: 20px;
+	vertical-align: middle;
+	display: inline-block;
+}
+#accepted-bookings-block{
+	text-align: center;
+	width: 300px;
+	height: 700px;
+	overflow: auto;
+	margin-top: 15px;
+	display: inline-block;
+	background-color: white;
+	vertical-align: middle;
 }
 .booking-single{
 	margin-left: 50px;

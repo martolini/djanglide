@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from glide.core.profiles.models import Profile
+from datetime import date
 class Meetup(models.Model):
 	seen = models.BooleanField(default=False,)
 	target_recipient = models.ForeignKey(Profile,verbose_name="The target recipient",related_name="book_recipients")
@@ -14,6 +15,11 @@ class Meetup(models.Model):
 
 	def get_sender(self):
 		return self.target_sender.user.get_full_name().title()
+
+	def is_past_due(self):
+	    if date.today() > self.date:
+	        return True
+	    return False
 
 class BookRequest(models.Model):
 	meetup = models.ForeignKey(Meetup,verbose_name="The meetup object")

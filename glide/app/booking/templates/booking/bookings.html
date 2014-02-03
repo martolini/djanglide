@@ -3,11 +3,14 @@
 {% load booking %}
 {% block include %}
 	<link href="{{ STATIC_URL }}bookings.css" media="screen" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" media="screen" rel="stylesheet">
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css" media="screen" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div id="bookings-block">
-			{% load_bookings_request user %}
-</div>
 
+			{% load_bookings_request user %}
+
+			
 {% endblock %}
